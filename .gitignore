@@ -37,3 +37,5 @@ yarn-error.log*
 .npm-cache/
 .npm-cache
 .env
+.firecrawl
+.vscode
