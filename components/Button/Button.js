@@ -33,7 +33,7 @@ const Button = ({ href, onClick, children, classes, type, ...otherProps }) => {
 Button.propTypes = {
   href: PropTypes.string,
   onClick: PropTypes.func,
-  children: PropTypes.string.isRequired,
+  children: PropTypes.node.isRequired,
   classes: PropTypes.string,
   type: PropTypes.string,
 };

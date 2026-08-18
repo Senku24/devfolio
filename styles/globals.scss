@@ -7,15 +7,15 @@
 *::before {
   padding: 0;
   margin: 0;
-  -webkit-tap-highlight-color: rgba(112, 0, 255, 0.05);
-  cursor: none;
+  -webkit-tap-highlight-color: rgba(200, 245, 66, 0.08);
+  cursor: auto;
 }
 
 html {
   scroll-behavior: smooth;
   -ms-overflow-style: scrollbar;
   scrollbar-width: thin;
-  scrollbar-color: rgba(112, 0, 255, 0.75) transparent;
+  scrollbar-color: rgba(200, 245, 66, 0.55) transparent;
   overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
 
@@ -57,7 +57,7 @@ body {
 }
 
 ::-webkit-scrollbar-thumb {
-  background: rgba(112, 0, 255, 0.75);
+  background: rgba(200, 245, 66, 0.55);
   border-radius: 1rem;
   transition: all 0.2s;
 }
@@ -85,8 +85,43 @@ body {
 }
 
 a,
+button,
 input[type="checkbox"] {
-  cursor: none !important;
+  cursor: pointer;
+}
+
+.explore-track {
+  animation: explore-marquee 42s linear infinite;
+}
+
+.explore-marquee:hover .explore-track {
+  animation-play-state: paused;
+}
+
+@keyframes explore-marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+  .explore-track {
+    animation: none !important;
+  }
 }
 
 .outer-menu {
@@ -268,8 +303,8 @@ input[type="checkbox"] {
               90deg,
               #ffffff 0%,
               #ffffff 50%,
-              #8b31ff 51%,
-              #7000ff 100%
+              #c8f542 51%,
+              #d8ff6a 100%
             );
             background-size: 200% 100%;
             background-clip: text;

@@ -14,21 +14,21 @@ const About1 = ({ clientHeight }) => {
         })
         .fromTo(
           quoteRef.current.querySelector(".about-1"),
-          { opacity: 0.2 },
+          { opacity: 0.55 },
           { opacity: 1 }
         )
         .to(quoteRef.current.querySelector(".about-1"), {
-          opacity: 0.2,
+          opacity: 0.55,
           delay: 0.5,
         })
         .fromTo(
           quoteRef.current.querySelector(".about-2"),
-          { opacity: 0.2 },
+          { opacity: 0.55 },
           { opacity: 1 },
           "<"
         )
         .to(quoteRef.current.querySelector(".about-2"), {
-          opacity: 0.2,
+          opacity: 0.85,
           delay: 1,
         });
 
@@ -56,12 +56,12 @@ const About1 = ({ clientHeight }) => {
           className="font-medium text-[2.70rem] md:text-6xl lg:text-[4rem] text-center"
         >
           <span className="about-1 leading-tight">
-            I&apos;m a passionate Engineer who&apos;s focused on building
-            scalable and performant apps.{" "}
+            I build production software across the stack — interfaces, APIs,
+            data, and the last mile of shipping.{" "}
           </span>
           <span className="about-2 leading-tight">
-            I take responsibility to craft a good user experience using modern
-            frontend architecture.{" "}
+            Lately that includes AI-powered tools, SaaS systems, and products
+            people actually use.{" "}
           </span>
         </h2>
       </div>

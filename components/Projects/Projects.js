@@ -82,7 +82,7 @@ const Projects = ({ isDesktop, clientHeight }) => {
   return (
     <section
       ref={sectionRef}
-      id={MENULINKS[2].ref}
+      id={MENULINKS[3].ref}
       aria-label="Projects"
       className={`${
         isDesktop && "min-h-screen"
@@ -115,6 +115,7 @@ const Projects = ({ isDesktop, clientHeight }) => {
                 index === PROJECTS.length - 1 ? "" : "mr-8 xs:mr-10 sm:mr-12"
               }
               project={project}
+              isDesktop={isDesktop}
               key={project.name}
             />
           ))}

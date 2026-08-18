@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" fill="none">
+  <rect width="64" height="64" rx="6" fill="#1B4F9C"/>
+  <path d="M8 16h48l-6 8H14z" fill="#F5C518"/>
+  <text x="32" y="46" text-anchor="middle" fill="#fff" font-family="Georgia, serif" font-size="18" font-weight="700">VIT</text>
+</svg>
