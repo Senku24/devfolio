@@ -35,4 +35,5 @@ yarn-error.log*
 /.env.local
 
 .npm-cache/
+.npm-cache
 .env
