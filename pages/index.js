@@ -17,35 +17,52 @@ import Contact from "@/components/Contact/Contact";
 import Footer from "@/components/Footer/Footer";
 import { displayFancyLogs } from "utils/log";
 
+const DESKTOP_QUERY = "(min-width: 1024px) and (pointer: fine)";
+
 if (typeof window !== "undefined") {
   gsap.registerPlugin(ScrollTrigger);
   gsap.config({ nullTargetWarn: false });
 }
 
 export default function Home() {
-  const [isDesktop, setIsDesktop] = useState(true);
+  const [isDesktop, setIsDesktop] = useState(false);
+  const [prefersReducedMotion, setPrefersReducedMotion] = useState(false);
   const [clientHeight, setClientHeight] = useState(800);
 
   useEffect(() => {
     displayFancyLogs();
-    window.history.scrollRestoration = "manual";
-    setIsDesktop(
-      typeof window.orientation === "undefined" &&
-        navigator.userAgent.indexOf("IEMobile") === -1
-    );
-    setClientHeight(window.innerHeight);
+    const media = window.matchMedia(DESKTOP_QUERY);
+    const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+    const apply = () => {
+      setIsDesktop(media.matches);
+      setPrefersReducedMotion(reducedMotion.matches);
+      setClientHeight(window.innerHeight);
+      ScrollTrigger.refresh();
+    };
+    apply();
+    media.addEventListener("change", apply);
+    reducedMotion.addEventListener("change", apply);
+    window.addEventListener("resize", apply);
+    return () => {
+      media.removeEventListener("change", apply);
+      reducedMotion.removeEventListener("change", apply);
+      window.removeEventListener("resize", apply);
+    };
   }, []);
 
   return (
     <>
+      <a href="#content" className="skip-link">
+        Skip to content
+      </a>
       <Header>
         <Menu />
       </Header>
       <ProgressIndicator />
       <Cursor isDesktop={isDesktop} />
-      <main className="flex flex-col">
+      <main id="content" tabIndex={-1} className="flex flex-col outline-none">
         <div
-          role="img"
+          aria-hidden="true"
           className="pointer-events-none absolute right-0 -z-10 inline-block rotate-90 text-gray-light-1 opacity-10 xs:top-96 xs:text-8xl sm:text-9xl md:top-52"
         >
           DEV
@@ -55,7 +72,11 @@ export default function Home() {
         <About />
         <Skills />
         <About2 clientHeight={clientHeight} />
-        <Projects isDesktop={isDesktop} clientHeight={clientHeight} />
+        <Projects
+          isDesktop={isDesktop}
+          clientHeight={clientHeight}
+          prefersReducedMotion={prefersReducedMotion}
+        />
         <Experience />
         <Collaboration clientHeight={clientHeight} />
         <Contact />

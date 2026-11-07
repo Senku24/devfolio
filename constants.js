@@ -3,7 +3,10 @@ export const METADATA = {
   title: "Nixon Paul — Software Engineer",
   description:
     "Nixon Paul is a Software Engineer and Full-Stack Developer in Gurugram, building SaaS products, modern web systems, and practical AI tools.",
-  siteUrl: "/",
+  // TODO(owner): absolute primary origin, including https and apex or www.
+  // Can also be supplied at build time via NEXT_PUBLIC_SITE_URL.
+  siteUrl: process.env.NEXT_PUBLIC_SITE_URL || "",
+  // TODO(owner): X/Twitter handle, without @, or leave empty
   twitterHandle: "",
   keywords: [
     "Nixon Paul",
@@ -31,16 +34,19 @@ export const PROFILE = {
     "Building full-stack products, AI-powered tools, and SaaS systems that people actually use.",
   github: "https://github.com/Senku24",
   linkedin: "https://www.linkedin.com/in/nixonpaul24/",
-  resume: "/resume.pdf",
-  email: "YOUR_EMAIL_HERE",
+  // TODO(owner): drop the final PDF at public/resume.pdf, then set this back
+  // to "/resume.pdf". Links stay hidden while this is empty.
+  resume: "",
+  email: "nixonpaule24@gmail.com",
 };
 
+// Keep this order in sync with the scroll order of sections in pages/index.js
 export const MENULINKS = [
   { name: "Home", ref: "home" },
   { name: "About", ref: "about" },
-  { name: "Experience", ref: "experience" },
-  { name: "Projects", ref: "projects" },
   { name: "Skills", ref: "skills" },
+  { name: "Projects", ref: "projects" },
+  { name: "Experience", ref: "experience" },
   { name: "Contact", ref: "contact" },
 ];
 
@@ -64,6 +70,8 @@ export const ABOUT = {
   work: "I prefer owning the path from architecture to implementation to the next iteration. Curiosity is the habit. Shipping is the proof.",
 };
 
+// TODO(owner): replace the descriptions below with 2–3 outcome bullets that
+// include numbers, and confirm the dates/education/certification details.
 export const EXPERIENCE = [
   {
     company: "Virtusa",
@@ -105,14 +113,14 @@ export const CERTIFICATION = {
   logo: "/brands/microsoft.svg",
 };
 
+// Kept deliberately short: a defensible shortlist, not a buzzword wall.
+// TODO(owner): confirm or swap any of these for the final shortlist.
 export const SKILLS = {
   Frontend: [
     { name: "React", icon: "react" },
     { name: "Next.js", icon: "nextjs" },
     { name: "TypeScript", icon: "typescript" },
     { name: "JavaScript", icon: "javascript" },
-    { name: "HTML", icon: "html" },
-    { name: "CSS", icon: "css" },
     { name: "Tailwind CSS", icon: "tailwindcss" },
   ],
   Backend: [
@@ -120,115 +128,93 @@ export const SKILLS = {
     { name: "Express", icon: "express" },
     { name: "REST APIs", icon: "rest" },
     { name: "Java", icon: "java" },
-    { name: "JWT", icon: "jwt" },
-    { name: "Middleware", icon: "middleware" },
   ],
   "Databases & Data": [
     { name: "PostgreSQL", icon: "postgresql" },
     { name: "MongoDB", icon: "mongodb" },
-    { name: "MySQL", icon: "mysql" },
     { name: "Prisma", icon: "prisma" },
-    { name: "Drizzle", icon: "drizzle" },
-    { name: "Supabase", icon: "supabase" },
   ],
   "AI / ML": [
     { name: "Python", icon: "python" },
-    { name: "NLP", icon: "spacy" },
     { name: "spaCy", icon: "spacy" },
-    { name: "Embeddings", icon: "embeddings" },
     { name: "RAG", icon: "rag" },
   ],
   "AI Tools": [
     { name: "Claude Code", icon: "claude" },
     { name: "Cursor", icon: "cursor" },
-    { name: "Antigravity", icon: "antigravity" },
-    { name: "GitHub Copilot", icon: "githubcopilot" },
-    { name: "Hugging Face", icon: "huggingface" },
-    { name: "AI APIs", icon: "aiapis" },
   ],
   "Real-time": [
     { name: "WebSockets", icon: "websockets" },
     { name: "WebRTC", icon: "webrtc" },
-    { name: "Queues", icon: "queues" },
     { name: "Pub/Sub", icon: "pubsub" },
   ],
   "DevOps / Infra": [
     { name: "Git", icon: "git" },
-    { name: "GitHub", icon: "github" },
     { name: "Docker", icon: "docker" },
-    { name: "Kubernetes", icon: "kubernetes" },
     { name: "GitHub Actions", icon: "githubactions" },
     { name: "Vercel", icon: "vercel" },
-    { name: "Firebase", icon: "firebase" },
-  ],
-  Tooling: [
-    { name: "Bun", icon: "bun" },
-    { name: "Turborepo", icon: "turbo" },
   ],
 };
 
 export const EXPLORING = [
-  "NLP",
-  "Transformers",
-  "Vector Databases",
   "RAG",
   "AI Agents",
-  "Agent Frameworks",
-  "Agent Memory",
   "Multimodal Agents",
-  "Computer Use",
-  "Fine-Tuning",
-  "RL Fine-Tuning",
   "LLM Observability",
-  "Tracing",
   "Evaluations",
-  "Advanced LLM Systems",
 ];
 
+// outcome/role are shown on the card when present; `live` renders a Live link
+// only when a deployment exists. TODO(owner): add outcome, role and live URLs.
 export const PROJECTS = [
   {
     name: "CodexIQ",
     imageKey: "codexiq",
-    description: "Understand any codebase in minutes, not weeks.",
+    outcome: "Understand any codebase in minutes, not weeks.",
+    role: "",
     gradient: ["#0F172A", "#1E293B"],
-    url: "https://github.com/Senku24/codexIQ",
-    github: "https://github.com/Senku24/codexIQ",
+    repo: "https://github.com/Senku24/codexIQ",
+    live: "",
     tech: ["typescript", "react", "nextjs", "postgresql", "prisma"],
   },
   {
     name: "GreenWallet AI",
     imageKey: "greenwallet",
-    description: "AI-powered finance that actually changes habits.",
+    outcome: "AI-powered finance that actually changes habits.",
+    role: "",
     gradient: ["#14532D", "#166534"],
-    url: "https://github.com/Senku24/greenWallet",
-    github: "https://github.com/Senku24/greenWallet",
+    repo: "https://github.com/Senku24/greenWallet",
+    live: "",
     tech: ["python", "react", "typescript", "tailwindcss"],
   },
   {
     name: "ShelfLife",
     imageKey: "shelflife",
-    description: "Household inventory that stops food from going to waste.",
+    outcome: "Household inventory that stops food from going to waste.",
+    role: "",
     gradient: ["#1E3A5F", "#0F172A"],
-    url: "https://github.com/Senku24/shelf-life-inventory-tracker",
-    github: "https://github.com/Senku24/shelf-life-inventory-tracker",
+    repo: "https://github.com/Senku24/shelf-life-inventory-tracker",
+    live: "",
     tech: ["javascript", "react", "nodejs", "mongodb"],
   },
   {
     name: "Resume Analyzer",
     imageKey: "resume-analyzer",
-    description: "NLP scoring for resume–job fit without a black box.",
+    outcome: "NLP scoring for resume–job fit without a black box.",
+    role: "",
     gradient: ["#3F1D2E", "#1F2937"],
-    url: "https://github.com/Senku24/NLP-based-Resume-Analyzer",
-    github: "https://github.com/Senku24/NLP-based-Resume-Analyzer",
+    repo: "https://github.com/Senku24/NLP-based-Resume-Analyzer",
+    live: "",
     tech: ["python"],
   },
   {
     name: "CEX API",
     imageKey: "cex",
-    description: "Typed auth and persistence for trading-account workflows.",
+    outcome: "Typed auth and persistence for trading-account workflows.",
+    role: "",
     gradient: ["#111827", "#1F2937"],
-    url: "https://github.com/Senku24/cex",
-    github: "https://github.com/Senku24/cex",
+    repo: "https://github.com/Senku24/cex",
+    live: "",
     tech: ["nodejs", "express", "prisma", "postgresql"],
   },
 ];
