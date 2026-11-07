@@ -6,7 +6,7 @@ const App = ({ Component, pageProps }) => {
   return (
     <>
       <Meta />
-      <div className={`${calibre.variable} font-sans ${jetbrains_mono.variable} font-mono`}>
+      <div className={`${calibre.variable} font-sans ${jetbrains_mono.variable}`}>
         <Component {...pageProps} />
       </div>
     </>
