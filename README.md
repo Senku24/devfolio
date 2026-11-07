@@ -1,9 +1,13 @@
 # Nixon Paul — Portfolio
 
-Personal portfolio for Nixon Paul, Software Engineer and Full-Stack Developer.
-Built with Next.js (Pages Router), Tailwind CSS, GSAP and SCSS modules.
+Personal portfolio for Nixon Paul, Software Engineer and AI Full-Stack Developer.
+Built with Next.js, Tailwind CSS, GSAP and SCSS modules.
 
-![Portfolio screenshot](https://github.com/user-attachments/assets/7eb37d64-675c-42f1-9726-bdbc491d7a1c)
+<img width="1920" height="991" alt="Screenshot 2026-11-08 at 4 40 54 AM" src="https://github.com/user-attachments/assets/6ef41153-a986-49a5-aca0-79867c1a9169" />
+<img width="1920" height="989" alt="Screenshot 2026-11-08 at 4 41 27 AM" src="https://github.com/user-attachments/assets/3218c5b5-840c-4652-ae6a-6c7ece130ead" />
+<img width="1920" height="1001" alt="Screenshot 2026-11-08 at 4 41 56 AM" src="https://github.com/user-attachments/assets/eadfb3c8-55cf-4219-90d3-4f51eec7283a" />
+<img width="1920" height="921" alt="Screenshot 2026-11-08 at 4 42 31 AM" src="https://github.com/user-attachments/assets/4441cca8-276f-4e16-83f9-f4a49f3abd56" />
+
 
 ## Getting started
 
@@ -38,33 +42,3 @@ utils/            # cn, analytics-free helpers, sound effects
 Nearly all content lives in `constants.js` — edit profile, projects, skills and
 experience there. Anything still waiting on owner input is marked
 `TODO(owner)` and is listed in the pull request.
-
-## Deployment
-
-Vercel (or any Node host) works with the defaults. Set one environment variable
-in the deployment project:
-
-```bash
-NEXT_PUBLIC_SITE_URL=https://your-primary-domain.com
-```
-
-It is the single source for canonical, Open Graph and Twitter URLs. The same
-origin must be written into `public/sitemap.xml` and `public/robots.txt`; both
-currently contain the `https://example.com` placeholder.
-
-Before launch:
-
-- add the final PDF at `public/resume.pdf`, then set `PROFILE.resume` back to
-  `"/resume.pdf"` (the resume links stay hidden while it is empty)
-- replace the `https://example.com` entries in `public/sitemap.xml` and
-  `public/robots.txt`
-- add `TODO(owner)` project roles/live URLs, the skills shortlist confirmation
-  and experience metrics
-
-## License
-
-MIT — see [LICENSE.md](LICENSE.md). Copyright (c) 2022 Shubh Porwal and
-(c) 2026 Nixon Paul.
-
-Based on the MIT-licensed portfolio template by
-[Shubh Porwal](https://github.com/shubh73/devfolio).
