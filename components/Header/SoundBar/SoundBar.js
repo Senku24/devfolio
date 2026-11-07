@@ -6,13 +6,24 @@ const SoundBar = () => {
   const [isPlaying, setIsPlaying] = useState(false);
 
   const togglePlayPause = () => {
-    if (!isPlaying) soundBarEl.current.play();
-    else soundBarEl.current.pause();
+    const audio = soundBarEl.current;
+    if (!audio) return;
+    if (!isPlaying) {
+      const pending = audio.play();
+      if (pending && typeof pending.catch === "function") {
+        pending.catch(() => setIsPlaying(false));
+      }
+    } else {
+      audio.pause();
+    }
     setIsPlaying((prev) => !prev);
   };
 
   return (
-    <div
+    <button
+      type="button"
+      aria-pressed={isPlaying}
+      aria-label="Play background music"
       className={cn(
         "soundBars link top-1 right-14 flex items-center justify-center",
         isPlaying && "play",
@@ -24,7 +35,7 @@ const SoundBar = () => {
       <span />
       <span />
       <audio ref={soundBarEl} src="/sounds/song.mp3" loop preload="none" />
-    </div>
+    </button>
   );
 };
 

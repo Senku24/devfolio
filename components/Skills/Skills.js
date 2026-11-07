@@ -31,7 +31,7 @@ const Skills = () => {
   return (
     <section
       ref={sectionRef}
-      id={MENULINKS[4].ref}
+      id={MENULINKS[2].ref}
       aria-label="Skills"
       className="relative mt-32 w-full select-none"
     >

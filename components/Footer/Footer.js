@@ -1,6 +1,5 @@
 /* eslint-disable @next/next/no-img-element */
 import FooterBg from "./FooterBg/FooterBg";
-import { theme } from "tailwind.config";
 import { PROFILE } from "../../constants";
 import { IconGithub, IconLinkedin, IconMail } from "@/components/Icons";
 
@@ -13,10 +12,7 @@ const ResumeIcon = () => (
 
 const Footer = () => (
   <footer
-    className="relative w-full select-none bg-cover"
-    style={{
-      backgroundImage: `linear-gradient(to right, ${theme.colors.indigo.light}, ${theme.colors.indigo.dark})`,
-    }}
+    className="relative w-full select-none bg-gradient-to-r from-indigo-light to-indigo-dark"
   >
     <FooterBg />
     <div className="h-full w-full pt-32 text-black">
@@ -32,16 +28,20 @@ const Footer = () => (
           <a href={PROFILE.linkedin} target="_blank" rel="noreferrer" aria-label="LinkedIn" className="inline-flex items-center gap-2 text-sm font-semibold">
             <IconLinkedin /> LinkedIn
           </a>
-          <a
-            href={`mailto:${PROFILE.email}`}
-            aria-label="Email"
-            className="inline-flex items-center gap-2 text-sm font-semibold"
-          >
-            <IconMail /> Email
-          </a>
-          <a href={PROFILE.resume} target="_blank" rel="noreferrer" className="inline-flex items-center gap-2 text-sm font-semibold">
-            <ResumeIcon /> Resume
-          </a>
+          {PROFILE.email ? (
+            <a
+              href={`mailto:${PROFILE.email}`}
+              aria-label={`Email ${PROFILE.email}`}
+              className="inline-flex items-center gap-2 text-sm font-semibold"
+            >
+              <IconMail /> {PROFILE.email}
+            </a>
+          ) : null}
+          {PROFILE.resume ? (
+            <a href={PROFILE.resume} target="_blank" rel="noreferrer" className="inline-flex items-center gap-2 text-sm font-semibold">
+              <ResumeIcon /> Resume
+            </a>
+          ) : null}
         </div>
         <p className="mt-8 text-center text-sm font-medium tracking-wide text-black">
           Built by {PROFILE.name}

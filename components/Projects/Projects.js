@@ -8,29 +8,6 @@ const Projects = ({ isDesktop, clientHeight }) => {
   const sectionRef = useRef(null);
   const sectionTitleRef = useRef(null);
 
-  useEffect(() => {
-    let projectsScrollTrigger;
-    let projectsTimeline;
-
-    if (isDesktop) {
-      [projectsTimeline, projectsScrollTrigger] = getProjectsSt();
-    } else {
-      const projectWrapper =
-        sectionRef.current.querySelector(".project-wrapper");
-      projectWrapper.style.width = "calc(100vw - 1rem)";
-      projectWrapper.style.overflowX = "scroll";
-    }
-
-    const [revealTimeline, revealScrollTrigger] = getRevealSt();
-
-    return () => {
-      projectsScrollTrigger && projectsScrollTrigger.kill();
-      projectsTimeline && projectsTimeline.kill();
-      revealScrollTrigger && revealScrollTrigger.kill();
-      revealTimeline && revealTimeline.progress(1);
-    };
-  }, [sectionRef, sectionTitleRef, isDesktop]);
-
   const getRevealSt = () => {
     const revealTl = gsap.timeline({ defaults: { ease: "none" } });
 
@@ -78,6 +55,30 @@ const Projects = ({ isDesktop, clientHeight }) => {
 
     return [timeline, scrollTrigger];
   };
+
+  useEffect(() => {
+    let projectsScrollTrigger;
+    let projectsTimeline;
+
+    const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    if (isDesktop && !reduced) {
+      [projectsTimeline, projectsScrollTrigger] = getProjectsSt();
+    } else {
+      const projectWrapper =
+        sectionRef.current.querySelector(".project-wrapper");
+      projectWrapper.style.width = "calc(100vw - 1rem)";
+      projectWrapper.style.overflowX = "scroll";
+    }
+
+    const [revealTimeline, revealScrollTrigger] = getRevealSt();
+
+    return () => {
+      projectsScrollTrigger && projectsScrollTrigger.kill();
+      projectsTimeline && projectsTimeline.kill();
+      revealScrollTrigger && revealScrollTrigger.kill();
+      revealTimeline && revealTimeline.progress(1);
+    };
+  }, [sectionRef, sectionTitleRef, isDesktop]);
 
   return (
     <section

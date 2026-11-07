@@ -3,7 +3,9 @@ export const METADATA = {
   title: "Nixon Paul — Software Engineer",
   description:
     "Nixon Paul is a Software Engineer and Full-Stack Developer in Gurugram, building SaaS products, modern web systems, and practical AI tools.",
-  siteUrl: "/",
+  // TODO(owner): absolute primary origin, including https and apex or www
+  siteUrl: "",
+  // TODO(owner): X/Twitter handle, without @, or leave empty
   twitterHandle: "",
   keywords: [
     "Nixon Paul",
@@ -31,16 +33,18 @@ export const PROFILE = {
     "Building full-stack products, AI-powered tools, and SaaS systems that people actually use.",
   github: "https://github.com/Senku24",
   linkedin: "https://www.linkedin.com/in/nixonpaul24/",
+  // TODO(owner): drop the resume PDF at public/resume.pdf before launch
   resume: "/resume.pdf",
-  email: "YOUR_EMAIL_HERE",
+  email: "nixonpaule24@gmail.com",
 };
 
+// Keep this order in sync with the scroll order of sections in pages/index.js
 export const MENULINKS = [
   { name: "Home", ref: "home" },
   { name: "About", ref: "about" },
-  { name: "Experience", ref: "experience" },
-  { name: "Projects", ref: "projects" },
   { name: "Skills", ref: "skills" },
+  { name: "Projects", ref: "projects" },
+  { name: "Experience", ref: "experience" },
   { name: "Contact", ref: "contact" },
 ];
 
@@ -185,50 +189,57 @@ export const EXPLORING = [
   "Advanced LLM Systems",
 ];
 
+// outcome/role are shown on the card when present; `live` renders a Live link
+// only when a deployment exists. TODO(owner): add outcome, role and live URLs.
 export const PROJECTS = [
   {
     name: "CodexIQ",
     imageKey: "codexiq",
-    description: "Understand any codebase in minutes, not weeks.",
+    outcome: "Understand any codebase in minutes, not weeks.",
+    role: "",
     gradient: ["#0F172A", "#1E293B"],
-    url: "https://github.com/Senku24/codexIQ",
-    github: "https://github.com/Senku24/codexIQ",
+    repo: "https://github.com/Senku24/codexIQ",
+    live: "",
     tech: ["typescript", "react", "nextjs", "postgresql", "prisma"],
   },
   {
     name: "GreenWallet AI",
     imageKey: "greenwallet",
-    description: "AI-powered finance that actually changes habits.",
+    outcome: "AI-powered finance that actually changes habits.",
+    role: "",
     gradient: ["#14532D", "#166534"],
-    url: "https://github.com/Senku24/greenWallet",
-    github: "https://github.com/Senku24/greenWallet",
+    repo: "https://github.com/Senku24/greenWallet",
+    live: "",
     tech: ["python", "react", "typescript", "tailwindcss"],
   },
   {
     name: "ShelfLife",
     imageKey: "shelflife",
-    description: "Household inventory that stops food from going to waste.",
+    outcome: "Household inventory that stops food from going to waste.",
+    role: "",
     gradient: ["#1E3A5F", "#0F172A"],
-    url: "https://github.com/Senku24/shelf-life-inventory-tracker",
-    github: "https://github.com/Senku24/shelf-life-inventory-tracker",
+    repo: "https://github.com/Senku24/shelf-life-inventory-tracker",
+    live: "",
     tech: ["javascript", "react", "nodejs", "mongodb"],
   },
   {
     name: "Resume Analyzer",
     imageKey: "resume-analyzer",
-    description: "NLP scoring for resume–job fit without a black box.",
+    outcome: "NLP scoring for resume–job fit without a black box.",
+    role: "",
     gradient: ["#3F1D2E", "#1F2937"],
-    url: "https://github.com/Senku24/NLP-based-Resume-Analyzer",
-    github: "https://github.com/Senku24/NLP-based-Resume-Analyzer",
+    repo: "https://github.com/Senku24/NLP-based-Resume-Analyzer",
+    live: "",
     tech: ["python"],
   },
   {
     name: "CEX API",
     imageKey: "cex",
-    description: "Typed auth and persistence for trading-account workflows.",
+    outcome: "Typed auth and persistence for trading-account workflows.",
+    role: "",
     gradient: ["#111827", "#1F2937"],
-    url: "https://github.com/Senku24/cex",
-    github: "https://github.com/Senku24/cex",
+    repo: "https://github.com/Senku24/cex",
+    live: "",
     tech: ["nodejs", "express", "prisma", "postgresql"],
   },
 ];

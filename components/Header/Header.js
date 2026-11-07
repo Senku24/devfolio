@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useRef } from "react";
+import { cloneElement, useCallback, useEffect, useRef, useState } from "react";
 import { useSfx } from "utils/use-sfx";
 import SoundBar from "./SoundBar/SoundBar";
 import { MENULINKS, PROFILE } from "../../constants";
@@ -12,24 +12,37 @@ const ResumeIcon = () => (
 );
 
 const Header = ({ children }) => {
-  const inputRef = useRef(null);
+  const [menuOpen, setMenuOpen] = useState(false);
+  const menuButtonRef = useRef(null);
   const navRef = useRef(null);
   const sfx = useSfx();
 
-  const handleClick = useCallback(
-    (e) => {
-      document.body.style.overflow = e.target.checked ? "hidden" : "";
-      sfx.play(e.target.checked ? "pop" : "pop-down");
-    },
-    [sfx]
+  const openMenu = useCallback(() => {
+    setMenuOpen(true);
+    document.body.style.overflow = "hidden";
+    sfx.play("pop");
+  }, [sfx]);
+
+  const closeMenu = useCallback(() => {
+    setMenuOpen(false);
+    document.body.style.overflow = "";
+    sfx.play("pop-down");
+  }, [sfx]);
+
+  const toggleMenu = useCallback(
+    () => (menuOpen ? closeMenu() : openMenu()),
+    [menuOpen, openMenu, closeMenu]
   );
 
-  const handleKeyDown = useCallback((e) => {
-    if (e.key === "Escape" && inputRef.current?.checked) {
-      inputRef.current.checked = false;
-      document.body.style.overflow = "";
-    }
-  }, []);
+  const handleKeyDown = useCallback(
+    (e) => {
+      if (e.key === "Escape" && menuOpen) {
+        closeMenu();
+        menuButtonRef.current?.focus();
+      }
+    },
+    [menuOpen, closeMenu]
+  );
 
   useEffect(() => {
     document.addEventListener("keydown", handleKeyDown);
@@ -43,6 +56,8 @@ const Header = ({ children }) => {
     return () => {
       document.removeEventListener("keydown", handleKeyDown);
       window.removeEventListener("scroll", onScroll);
+      // body scroll lock must not outlive this header
+      document.body.style.overflow = "";
     };
   }, [handleKeyDown]);
 
@@ -71,33 +86,45 @@ const Header = ({ children }) => {
             </a>
           ))}
         </div>
-        <div className="outer-menu relative z-[1] flex items-center gap-5">
+        <div
+          className={`outer-menu relative z-[1] flex items-center gap-5 ${
+            menuOpen ? "menu-open" : ""
+          }`}
+        >
           <a href={PROFILE.github} target="_blank" rel="noreferrer" aria-label="GitHub" className="hidden text-white hover:text-accent sm:inline-flex">
             <IconGithub />
           </a>
           <a href={PROFILE.linkedin} target="_blank" rel="noreferrer" aria-label="LinkedIn" className="hidden text-white hover:text-accent sm:inline-flex">
             <IconLinkedin />
           </a>
-          <a
-            href={PROFILE.resume}
-            target="_blank"
-            rel="noreferrer"
-            className="hidden items-center gap-1.5 font-mono text-xs uppercase tracking-wider text-gray-light-2 hover:text-accent sm:inline-flex"
-          >
-            <ResumeIcon /> Resume
-          </a>
+          {PROFILE.resume ? (
+            <a
+              href={PROFILE.resume}
+              target="_blank"
+              rel="noreferrer"
+              className="hidden items-center gap-1.5 font-mono text-xs uppercase tracking-wider text-gray-light-2 hover:text-accent sm:inline-flex"
+            >
+              <ResumeIcon /> Resume
+            </a>
+          ) : null}
           <SoundBar />
-          <input
-            ref={inputRef}
-            aria-label="Open menu"
-            className="checkbox-toggle link absolute right-0 top-0 h-6 w-6 opacity-0"
-            type="checkbox"
-            onClick={handleClick}
-          />
-          <div className="hamburger flex h-6 w-6 items-center justify-center">
+          <button
+            ref={menuButtonRef}
+            type="button"
+            aria-expanded={menuOpen}
+            aria-controls="side-menu"
+            aria-label={menuOpen ? "Close menu" : "Open menu"}
+            onClick={toggleMenu}
+            className="hamburger link relative flex h-6 w-6 items-center justify-center"
+          >
             <div className="relative flex w-full items-center justify-center bg-white duration-300" />
-          </div>
-          {children}
+          </button>
+          {children
+            ? cloneElement(children, {
+                open: menuOpen,
+                onClose: () => closeMenu(false),
+              })
+            : null}
         </div>
       </div>
     </nav>

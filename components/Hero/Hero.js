@@ -108,14 +108,16 @@ const Hero = () => {
             >
               <IconLinkedin /> LinkedIn
             </a>
-            <a
-              href={PROFILE.resume}
-              target="_blank"
-              rel="noreferrer"
-              className="inline-flex items-center gap-2 border border-white/20 px-4 py-2 text-sm font-semibold transition hover:border-accent hover:text-accent"
-            >
-              <ResumeIcon /> Resume
-            </a>
+            {PROFILE.resume ? (
+              <a
+                href={PROFILE.resume}
+                target="_blank"
+                rel="noreferrer"
+                className="inline-flex items-center gap-2 border border-white/20 px-4 py-2 text-sm font-semibold transition hover:border-accent hover:text-accent"
+              >
+                <ResumeIcon /> Resume
+              </a>
+            ) : null}
           </div>
         </div>
         <div className="hero-visual relative z-10 w-full overflow-hidden lg:max-h-[min(78vh,760px)]">

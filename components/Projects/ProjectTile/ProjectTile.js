@@ -15,7 +15,7 @@ const tiltOptions = {
 const ProjectTile = ({ project, classes, isDesktop }) => {
   const projectCard = useRef(null);
 
-  const { name, imageKey, description, gradient, url, tech } = project;
+  const { name, imageKey, outcome, role, gradient, repo, live, tech } = project;
 
   const image = PROJECT_IMAGES[imageKey];
 
@@ -31,11 +31,8 @@ const ProjectTile = ({ project, classes, isDesktop }) => {
   }, []);
 
   return (
-    <a
-      href={url || undefined}
-      className={`overflow-hidden rounded-3xl snap-start link ${additionalClasses}`}
-      target="_blank"
-      rel="noreferrer"
+    <div
+      className={`overflow-hidden rounded-3xl snap-start ${additionalClasses}`}
       style={{
         maxWidth: isDesktop ? "calc(100vw - 2rem)" : "calc(100vw - 4rem)",
         flex: "1 0 auto",
@@ -57,9 +54,10 @@ const ProjectTile = ({ project, classes, isDesktop }) => {
         />
         <Image
           src={image}
-          alt={name}
+          alt={`${name} project preview`}
           placeholder="blur"
           fill
+          sizes="(min-width: 1024px) 60vw, 90vw"
           className={styles.projectImage}
         />
         {!isDesktop && (
@@ -86,7 +84,7 @@ const ProjectTile = ({ project, classes, isDesktop }) => {
               <Image
                 className={`${i % 2 === 0 && "ml-16"} mb-4`}
                 src={`/projects/tech/${el}.svg`}
-                alt={el}
+                alt=""
                 height={45}
                 width={45}
                 key={el}
@@ -94,14 +92,43 @@ const ProjectTile = ({ project, classes, isDesktop }) => {
             ))}
           </div>
         </div>
-        <p
-          className="text-lg z-10 tracking-wide font-medium text-white transform-gpu"
+        <div
+          className="z-10 pl-2 transform-gpu"
           style={{ transform: "translateZ(0.8rem)" }}
         >
-          {description}
-        </p>
+          {role ? (
+            <p className="font-mono text-xs uppercase tracking-wider text-white/70">
+              {role}
+            </p>
+          ) : null}
+          <p className="text-lg tracking-wide font-medium text-white">
+            {outcome}
+          </p>
+          <div className="mt-3 flex flex-wrap items-center gap-4">
+            {live ? (
+              <a
+                href={live}
+                target="_blank"
+                rel="noreferrer"
+                className="link font-mono text-xs uppercase tracking-wider text-accent"
+              >
+                Live ↗
+              </a>
+            ) : null}
+            {repo ? (
+              <a
+                href={repo}
+                target="_blank"
+                rel="noreferrer"
+                className="link font-mono text-xs uppercase tracking-wider text-white"
+              >
+                Code ↗
+              </a>
+            ) : null}
+          </div>
+        </div>
       </div>
-    </a>
+    </div>
   );
 };
 

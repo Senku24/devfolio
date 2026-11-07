@@ -46,6 +46,14 @@ const Contact = () => {
           <div className="staggered-reveal">
             <Profiles />
           </div>
+          {PROFILE.email ? (
+            <a
+              href={`mailto:${PROFILE.email}`}
+              className="staggered-reveal mt-4 inline-flex font-mono text-base text-accent underline-offset-4 hover:underline"
+            >
+              {PROFILE.email}
+            </a>
+          ) : null}
           <div className="staggered-reveal flex flex-wrap gap-3">
             <Button href={PROFILE.linkedin} classes="link" type="primary" target="_blank" rel="noreferrer">
               LinkedIn

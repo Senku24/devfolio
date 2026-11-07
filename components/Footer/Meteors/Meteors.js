@@ -1,23 +1,30 @@
-import { useEffect, useState } from "react";
+import { useMemo } from "react";
 import { cn } from "utils/cn";
 
+// Deterministic PRNG so SSR and client markup match (no hydration mismatch)
+// and no effect is needed just to randomise decoration.
+const mulberry32 = (seed) => () => {
+  seed |= 0;
+  seed = (seed + 0x6d2b79f5) | 0;
+  let t = Math.imul(seed ^ (seed >>> 15), 1 | seed);
+  t = (t + Math.imul(t ^ (t >>> 7), 61 | t)) ^ t;
+  return ((t ^ (t >>> 14)) >>> 0) / 4294967296;
+};
+
 const Meteors = ({ number = 10 }) => {
-  const [meteorStyles, setMeteorStyles] = useState([]);
-
-  useEffect(() => {
-    const styles = [...new Array(number)].map(() => ({
-      top: -5,
-      left: Math.floor(Math.random() * window.innerWidth) + "px",
-      animationDelay: Math.random() * 1 + 0.2 + "s",
-      animationDuration: Math.floor(Math.random() * 9 + 2) + "s",
+  const meteors = useMemo(() => {
+    const rand = mulberry32(number * 9301 + 49297);
+    return [...new Array(number)].map(() => ({
+      top: "-5%",
+      left: Math.floor(rand() * 100) + "%",
+      animationDelay: rand() * 1 + 0.2 + "s",
+      animationDuration: Math.floor(rand() * 9 + 2) + "s",
     }));
-
-    setMeteorStyles(styles);
   }, [number]);
 
   return (
     <>
-      {[...meteorStyles].map((style, idx) => (
+      {meteors.map((style, idx) => (
         // Meteor Head
         <span
           key={idx}

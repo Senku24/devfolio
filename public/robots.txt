@@ -1,2 +1,5 @@
 User-agent: *
 Allow: /
+
+# TODO(owner): replace the host below with the primary domain once METADATA.siteUrl is set
+Sitemap: https://example.com/sitemap.xml

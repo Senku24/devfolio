@@ -1,10 +1,6 @@
 const nextConfig = {
-  webpack: (config) => {
-    config.module.rules.push({
-      test: /lottie\.json$/,
-      type: "json",
-    });
-    return config;
+  images: {
+    formats: ["image/avif", "image/webp"],
   },
   reactStrictMode: true,
   compiler: {
