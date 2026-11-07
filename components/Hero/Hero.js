@@ -1,4 +1,5 @@
-import { useLayoutEffect, useRef } from "react";
+import { useRef } from "react";
+import useIsomorphicLayoutEffect from "utils/use-isomorphic-layout-effect";
 import gsap from "gsap";
 import Button from "../Button/Button";
 import Profiles from "../Profiles/Profiles";
@@ -23,7 +24,7 @@ const ArrowIcon = () => (
 const Hero = () => {
   const sectionRef = useRef(null);
 
-  useLayoutEffect(() => {
+  useIsomorphicLayoutEffect(() => {
     const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     const ctx = gsap.context(() => {
       if (reduced) return;

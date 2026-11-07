@@ -1,4 +1,5 @@
-import { useLayoutEffect, useRef } from "react";
+import { useRef } from "react";
+import useIsomorphicLayoutEffect from "utils/use-isomorphic-layout-effect";
 import Image from "next/image";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
@@ -7,7 +8,7 @@ import { CERTIFICATION, EDUCATION, EXPERIENCE, MENULINKS } from "../../constants
 const Experience = () => {
   const sectionRef = useRef(null);
 
-  useLayoutEffect(() => {
+  useIsomorphicLayoutEffect(() => {
     const ctx = gsap.context(() => {
       gsap.from(".exp-item", {
         opacity: 0.5,

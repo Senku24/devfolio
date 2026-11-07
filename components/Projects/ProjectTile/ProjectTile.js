@@ -49,7 +49,7 @@ const ProjectTile = ({ project, classes, isDesktop }) => {
         <Image
           src="/project-bg.svg"
           alt=""
-          className="absolute w-full h-full top-0 left-0 opacity-20 rounded-3xl"
+          className="absolute h-full w-full left-0 top-0 rounded-3xl object-cover opacity-20"
           fill
         />
         <Image
@@ -82,7 +82,9 @@ const ProjectTile = ({ project, classes, isDesktop }) => {
           <div className="flex flex-col pb-8">
             {tech.map((el, i) => (
               <Image
-                className={`${i % 2 === 0 && "ml-16"} mb-4`}
+                className={`h-[45px] w-[45px] object-contain ${
+                  i % 2 === 0 ? "ml-16" : ""
+                } mb-4`}
                 src={`/projects/tech/${el}.svg`}
                 alt=""
                 height={45}

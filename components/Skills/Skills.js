@@ -1,5 +1,6 @@
 /* eslint-disable @next/next/no-img-element */
-import { useLayoutEffect, useRef } from "react";
+import { useRef } from "react";
+import useIsomorphicLayoutEffect from "utils/use-isomorphic-layout-effect";
 import Image from "next/image";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
@@ -8,7 +9,7 @@ import { EXPLORING, MENULINKS, SKILLS } from "../../constants";
 const Skills = () => {
   const sectionRef = useRef(null);
 
-  useLayoutEffect(() => {
+  useIsomorphicLayoutEffect(() => {
     const ctx = gsap.context(() => {
       const tl = gsap.timeline({ defaults: { ease: "none" } }).from(
         sectionRef.current.querySelectorAll(".staggered-reveal"),
