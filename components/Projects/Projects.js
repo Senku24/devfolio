@@ -4,7 +4,7 @@ import gsap from "gsap";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
 import ProjectTile from "./ProjectTile/ProjectTile";
 
-const Projects = ({ isDesktop, clientHeight }) => {
+const Projects = ({ isDesktop, clientHeight, prefersReducedMotion = false }) => {
   const sectionRef = useRef(null);
   const sectionTitleRef = useRef(null);
 
@@ -57,28 +57,34 @@ const Projects = ({ isDesktop, clientHeight }) => {
   };
 
   useEffect(() => {
-    let projectsScrollTrigger;
-    let projectsTimeline;
+    const section = sectionRef.current;
+    const projectWrapper = section.querySelector(".project-wrapper");
+    const reduced = prefersReducedMotion;
 
-    const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    if (isDesktop && !reduced) {
-      [projectsTimeline, projectsScrollTrigger] = getProjectsSt();
-    } else {
-      const projectWrapper =
-        sectionRef.current.querySelector(".project-wrapper");
-      projectWrapper.style.width = "calc(100vw - 1rem)";
-      projectWrapper.style.overflowX = "scroll";
-    }
+    // Reset any inline geometry left by the previous layout before measuring.
+    const ctx = gsap.context(() => {
+      gsap.set(section, { clearProps: "transform,width" });
+      gsap.set(sectionTitleRef.current, { clearProps: "transform" });
+      projectWrapper.style.width = "";
+      projectWrapper.style.overflowX = "";
+      projectWrapper.style.scrollSnapType = "";
 
-    const [revealTimeline, revealScrollTrigger] = getRevealSt();
+      if (isDesktop && !reduced) {
+        getProjectsSt();
+      } else {
+        projectWrapper.style.width = "calc(100vw - 1rem)";
+        projectWrapper.style.overflowX = "auto";
+        projectWrapper.style.scrollSnapType = "x mandatory";
+        projectWrapper.style.webkitOverflowScrolling = "touch";
+      }
 
-    return () => {
-      projectsScrollTrigger && projectsScrollTrigger.kill();
-      projectsTimeline && projectsTimeline.kill();
-      revealScrollTrigger && revealScrollTrigger.kill();
-      revealTimeline && revealTimeline.progress(1);
-    };
-  }, [sectionRef, sectionTitleRef, isDesktop]);
+      getRevealSt();
+    }, section);
+
+    ScrollTrigger.refresh();
+
+    return () => ctx.revert();
+  }, [sectionRef, sectionTitleRef, isDesktop, prefersReducedMotion]);
 
   return (
     <section
@@ -86,7 +92,7 @@ const Projects = ({ isDesktop, clientHeight }) => {
       id={MENULINKS[3].ref}
       aria-label="Projects"
       className={`${
-        isDesktop && "min-h-screen"
+        isDesktop && !prefersReducedMotion ? "min-h-screen" : ""
       } w-full relative select-none section-container transform-gpu`}
     >
       <div className="flex flex-col justify-center h-full">
