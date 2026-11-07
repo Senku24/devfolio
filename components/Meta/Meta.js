@@ -33,6 +33,7 @@ const Meta = () => {
       <meta property="og:description" content={METADATA.description} />
       {pageUrl ? <meta property="og:url" content={pageUrl} /> : null}
       {imageUrl ? <meta property="og:image" content={imageUrl} /> : null}
+      {imageUrl ? <meta property="og:image:type" content="image/png" /> : null}
       <meta property="og:image:width" content="1200" />
       <meta property="og:image:height" content="630" />
       <meta property="og:image:alt" content={`${PROFILE.name} — ${PROFILE.title}`} />
@@ -42,6 +43,9 @@ const Meta = () => {
       <meta name="twitter:title" content={METADATA.title} />
       <meta name="twitter:description" content={METADATA.description} />
       {imageUrl ? <meta name="twitter:image" content={imageUrl} /> : null}
+      {imageUrl ? (
+        <meta name="twitter:image:alt" content={`${PROFILE.name} — ${PROFILE.title}`} />
+      ) : null}
       {METADATA.twitterHandle ? (
         <meta name="twitter:site" content={`@${METADATA.twitterHandle.replace(/^@/, "")}`} />
       ) : null}
