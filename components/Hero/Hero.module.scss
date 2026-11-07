@@ -2,14 +2,6 @@
   animation: fadeAppear 1s 0.2s;
 }
 
-.lottieWrap {
-  :global(svg) {
-    width: 100% !important;
-    height: 100% !important;
-    filter: drop-shadow(0 0 28px rgba(139, 49, 255, 0.35));
-  }
-}
-
 .heroName{
     line-height: 1.5em;
     animation: fadeAppear 1.3s 0.3s;
@@ -33,11 +25,7 @@
 
 @keyframes fadeAppear {
   0% {
-    opacity: 0;
-  }
-
-  50% {
-    opacity: 0;
+    opacity: 0.35;
   }
 
   100% {

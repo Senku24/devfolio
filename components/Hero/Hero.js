@@ -1,16 +1,11 @@
 import { useLayoutEffect, useRef } from "react";
-import dynamic from "next/dynamic";
 import gsap from "gsap";
 import Button from "../Button/Button";
 import Profiles from "../Profiles/Profiles";
+import HeroVisual from "./HeroVisual";
 import styles from "./Hero.module.scss";
 import { MENULINKS, PROFILE } from "../../constants";
 import { IconGithub, IconLinkedin } from "@/components/Icons";
-
-const HeroScene = dynamic(() => import("./HeroScene"), {
-  ssr: false,
-  loading: () => <div className="h-[min(78vh,620px)] w-full" aria-hidden="true" />,
-});
 
 const ResumeIcon = () => (
   <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true">
@@ -120,8 +115,8 @@ const Hero = () => {
             ) : null}
           </div>
         </div>
-        <div className="hero-visual relative z-10 w-full overflow-hidden lg:max-h-[min(78vh,760px)]">
-          <HeroScene />
+        <div className="hero-visual relative z-10 mx-auto w-full max-w-[560px]">
+          <HeroVisual />
         </div>
       </div>
     </section>
