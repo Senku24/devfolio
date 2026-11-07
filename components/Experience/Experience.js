@@ -46,9 +46,10 @@ const Experience = () => {
     >
       <p className="uppercase tracking-widest text-gray-light-1">Experience</p>
       <h2 className="mt-2 w-fit text-6xl font-medium text-gradient">Where I&apos;ve worked</h2>
-      <ol className="exp-list relative mt-14 border-l border-white/10">
+      <div className="exp-list relative mt-14 border-l border-white/10">
         <span className="exp-line pointer-events-none absolute left-[-1px] top-0 h-full w-px origin-top bg-accent" />
-        {EXPERIENCE.map((job) => (
+        <ol>
+          {EXPERIENCE.map((job) => (
           <li key={job.company} className="exp-item relative pb-12 pl-10 last:pb-0">
             <span className="absolute -left-[7px] top-3 h-3 w-3 bg-accent" />
             <div className="flex flex-wrap items-center gap-4">
@@ -71,8 +72,9 @@ const Experience = () => {
             </div>
             <p className="mt-4 max-w-2xl text-gray-light-3">{job.description}</p>
           </li>
-        ))}
-      </ol>
+          ))}
+        </ol>
+      </div>
 
       <div className="mt-16 grid gap-8 border-t border-white/10 pt-12 md:grid-cols-2">
         <article className="flex gap-4">

@@ -4,6 +4,9 @@ import { MENULINKS } from "../../../constants";
 const Menu = ({ open, onClose }) => (
   <div
     id="side-menu"
+    role="dialog"
+    aria-modal={open ? "true" : undefined}
+    aria-label="Site navigation"
     aria-hidden={!open}
     className={`menu fixed top-0 left-0 w-full h-full overflow-hidden invisible pointer-events-none flex items-center justify-center ${
       open ? "menu-open" : ""

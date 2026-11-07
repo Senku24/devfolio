@@ -5,37 +5,44 @@ const SoundBar = () => {
   const soundBarEl = useRef(null);
   const [isPlaying, setIsPlaying] = useState(false);
 
-  const togglePlayPause = () => {
+  const togglePlayPause = async () => {
     const audio = soundBarEl.current;
     if (!audio) return;
-    if (!isPlaying) {
-      const pending = audio.play();
-      if (pending && typeof pending.catch === "function") {
-        pending.catch(() => setIsPlaying(false));
-      }
-    } else {
+
+    if (isPlaying) {
       audio.pause();
+      setIsPlaying(false);
+      return;
     }
-    setIsPlaying((prev) => !prev);
+
+    try {
+      await audio.play();
+      setIsPlaying(true);
+    } catch {
+      // Autoplay policies and unsupported formats reject play(); keep the UI off.
+      setIsPlaying(false);
+    }
   };
 
   return (
-    <button
-      type="button"
-      aria-pressed={isPlaying}
-      aria-label="Play background music"
-      className={cn(
-        "soundBars link top-1 right-14 flex items-center justify-center",
-        isPlaying && "play",
-      )}
-      onClick={togglePlayPause}
-    >
-      <span />
-      <span />
-      <span />
-      <span />
+    <>
+      <button
+        type="button"
+        aria-pressed={isPlaying}
+        aria-label={isPlaying ? "Pause background music" : "Play background music"}
+        className={cn(
+          "soundBars link top-1 right-14 flex items-center justify-center",
+          isPlaying && "play",
+        )}
+        onClick={togglePlayPause}
+      >
+        <span />
+        <span />
+        <span />
+        <span />
+      </button>
       <audio ref={soundBarEl} src="/sounds/song.mp3" loop preload="none" />
-    </button>
+    </>
   );
 };
 

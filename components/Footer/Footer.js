@@ -51,7 +51,14 @@ const Footer = () => (
         </p>
       </div>
     </div>
-    <img src="/footer-curve.svg" className="w-full rotate-180" alt="" loading="lazy" height={180} />
+    <img
+      src="/footer-curve.svg"
+      className="w-full rotate-180"
+      alt=""
+      loading="lazy"
+      width={1440}
+      height={180}
+    />
   </footer>
 );
 

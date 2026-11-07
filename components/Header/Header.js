@@ -19,13 +19,11 @@ const Header = ({ children }) => {
 
   const openMenu = useCallback(() => {
     setMenuOpen(true);
-    document.body.style.overflow = "hidden";
     sfx.play("pop");
   }, [sfx]);
 
   const closeMenu = useCallback(() => {
     setMenuOpen(false);
-    document.body.style.overflow = "";
     sfx.play("pop-down");
   }, [sfx]);
 
@@ -34,18 +32,29 @@ const Header = ({ children }) => {
     [menuOpen, openMenu, closeMenu]
   );
 
-  const handleKeyDown = useCallback(
-    (e) => {
+  // Lock body scroll while the overlay is open. Centralised here so every
+  // close path (link, Escape, backdrop, unmount) restores the previous value.
+  useEffect(() => {
+    if (!menuOpen) return;
+    const previous = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    return () => {
+      document.body.style.overflow = previous;
+    };
+  }, [menuOpen]);
+
+  useEffect(() => {
+    const handleKeyDown = (e) => {
       if (e.key === "Escape" && menuOpen) {
         closeMenu();
         menuButtonRef.current?.focus();
       }
-    },
-    [menuOpen, closeMenu]
-  );
+    };
+    document.addEventListener("keydown", handleKeyDown);
+    return () => document.removeEventListener("keydown", handleKeyDown);
+  }, [menuOpen, closeMenu]);
 
   useEffect(() => {
-    document.addEventListener("keydown", handleKeyDown);
     const onScroll = () => {
       if (!navRef.current) return;
       navRef.current.classList.toggle("py-4", window.scrollY > 24);
@@ -53,13 +62,8 @@ const Header = ({ children }) => {
       navRef.current.classList.toggle("border-white/5", window.scrollY > 24);
     };
     window.addEventListener("scroll", onScroll, { passive: true });
-    return () => {
-      document.removeEventListener("keydown", handleKeyDown);
-      window.removeEventListener("scroll", onScroll);
-      // body scroll lock must not outlive this header
-      document.body.style.overflow = "";
-    };
-  }, [handleKeyDown]);
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
 
   return (
     <nav
@@ -70,7 +74,6 @@ const Header = ({ children }) => {
         <a
           href="#home"
           className="group relative text-[1.15rem] font-semibold tracking-tight text-white transition-colors hover:text-accent"
-          aria-label="Home"
         >
           {PROFILE.name}
           <span className="absolute -bottom-1 left-0 h-px w-0 bg-accent transition-all duration-300 group-hover:w-full group-hover:shadow-[0_0_10px_#c8f542]" />
@@ -122,7 +125,7 @@ const Header = ({ children }) => {
           {children
             ? cloneElement(children, {
                 open: menuOpen,
-                onClose: () => closeMenu(false),
+                onClose: closeMenu,
               })
             : null}
         </div>
