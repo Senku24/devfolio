@@ -65,6 +65,7 @@ body {
 a:focus-visible,
 button:focus-visible,
 input:focus-visible,
+summary:focus-visible,
 [tabindex]:focus-visible {
   outline: 2px solid #c8f542;
   outline-offset: 3px;
@@ -111,8 +112,13 @@ input:focus-visible,
 }
 
 a,
-button {
+button,
+summary {
   cursor: pointer;
+}
+
+summary::-webkit-details-marker {
+  display: none;
 }
 
 .explore-track {

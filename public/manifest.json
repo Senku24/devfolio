@@ -1,7 +1,17 @@
 {
+  "id": "/",
   "name": "Nixon Paul — Software Engineer",
   "short_name": "Nixon Paul",
   "description": "Portfolio of Nixon Paul, Software Engineer and Full-Stack Developer.",
+  "lang": "en",
+  "dir": "ltr",
+  "scope": "/",
+  "start_url": "/",
+  "display": "standalone",
+  "orientation": "portrait",
+  "theme_color": "#0a0a0a",
+  "background_color": "#0a0a0a",
+  "categories": ["portfolio", "developer", "technology"],
   "icons": [
     {
       "src": "/icon-192x192.png",
@@ -25,9 +35,16 @@
       "type": "image/png"
     }
   ],
-  "theme_color": "#0a0a0a",
-  "background_color": "#0a0a0a",
-  "start_url": "/",
-  "display": "standalone",
-  "orientation": "portrait"
+  "shortcuts": [
+    {
+      "name": "Projects",
+      "short_name": "Projects",
+      "url": "/#projects"
+    },
+    {
+      "name": "Contact",
+      "short_name": "Contact",
+      "url": "/#contact"
+    }
+  ]
 }

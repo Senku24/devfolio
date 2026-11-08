@@ -12,6 +12,7 @@ import Skills from "@/components/Skills/Skills";
 import About2 from "@/components/About/About2";
 import Projects from "@/components/Projects/Projects";
 import Experience from "@/components/Experience/Experience";
+import FAQ from "@/components/FAQ/FAQ";
 import Collaboration from "@/components/Collaboration/Collaboration";
 import Contact from "@/components/Contact/Contact";
 import Footer from "@/components/Footer/Footer";
@@ -78,6 +79,7 @@ export default function Home() {
           prefersReducedMotion={prefersReducedMotion}
         />
         <Experience />
+        <FAQ />
         <Collaboration clientHeight={clientHeight} />
         <Contact />
       </main>
