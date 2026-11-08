@@ -34,20 +34,61 @@ export default function Home() {
     displayFancyLogs();
     const media = window.matchMedia(DESKTOP_QUERY);
     const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
-    const apply = () => {
-      setIsDesktop(media.matches);
-      setPrefersReducedMotion(reducedMotion.matches);
-      setClientHeight(window.innerHeight);
-      ScrollTrigger.refresh();
+    let lastWidth = window.innerWidth;
+    let resizeTimer;
+
+    const refreshAll = () => {
+      ScrollTrigger.getAll().forEach((trigger) => trigger.refresh());
     };
-    apply();
-    media.addEventListener("change", apply);
-    reducedMotion.addEventListener("change", apply);
-    window.addEventListener("resize", apply);
+
+    const sync = () => {
+      const nextDesktop = media.matches;
+      const nextReduced = reducedMotion.matches;
+      const nextHeight = window.innerHeight;
+
+      setIsDesktop((previous) =>
+        previous === nextDesktop ? previous : nextDesktop
+      );
+      setPrefersReducedMotion((previous) =>
+        previous === nextReduced ? previous : nextReduced
+      );
+      setClientHeight((previous) =>
+        previous === nextHeight ? previous : nextHeight
+      );
+
+      if (window.innerWidth !== lastWidth) {
+        lastWidth = window.innerWidth;
+        refreshAll();
+      }
+    };
+
+    const onResize = () => {
+      clearTimeout(resizeTimer);
+      resizeTimer = setTimeout(sync, 150);
+    };
+
+    sync();
+    media.addEventListener("change", sync);
+    reducedMotion.addEventListener("change", sync);
+    window.addEventListener("resize", onResize, { passive: true });
     return () => {
-      media.removeEventListener("change", apply);
-      reducedMotion.removeEventListener("change", apply);
-      window.removeEventListener("resize", apply);
+      clearTimeout(resizeTimer);
+      media.removeEventListener("change", sync);
+      reducedMotion.removeEventListener("change", sync);
+      window.removeEventListener("resize", onResize);
+    };
+  }, []);
+
+  // Fonts, images and the footer scene can settle after first paint. Refresh
+  // once more so every scroll-linked timeline uses the final layout.
+  useEffect(() => {
+    const refresh = () =>
+      ScrollTrigger.getAll().forEach((trigger) => trigger.refresh());
+    const timer = setTimeout(refresh, 600);
+    window.addEventListener("load", refresh);
+    return () => {
+      clearTimeout(timer);
+      window.removeEventListener("load", refresh);
     };
   }, []);
 
@@ -60,7 +101,7 @@ export default function Home() {
         <Menu />
       </Header>
       <ProgressIndicator />
-      <Cursor isDesktop={isDesktop} />
+      {isDesktop ? <Cursor /> : null}
       <main id="content" tabIndex={-1} className="flex flex-col outline-none">
         <div
           aria-hidden="true"

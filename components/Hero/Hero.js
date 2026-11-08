@@ -6,7 +6,6 @@ import Profiles from "../Profiles/Profiles";
 import HeroVisual from "./HeroVisual";
 import styles from "./Hero.module.scss";
 import { MENULINKS, PROFILE } from "../../constants";
-import { IconGithub, IconLinkedin } from "@/components/Icons";
 
 const ResumeIcon = () => (
   <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true">
@@ -88,22 +87,6 @@ const Hero = () => {
                 View Projects <ArrowIcon />
               </span>
             </Button>
-            <a
-              href={PROFILE.github}
-              target="_blank"
-              rel="noreferrer"
-              className="inline-flex items-center gap-2 border border-white/20 px-4 py-2 text-sm font-semibold transition hover:border-accent hover:text-accent hover:shadow-[0_8px_30px_rgba(124,58,237,0.18)]"
-            >
-              <IconGithub /> GitHub
-            </a>
-            <a
-              href={PROFILE.linkedin}
-              target="_blank"
-              rel="noreferrer"
-              className="inline-flex items-center gap-2 border border-white/20 px-4 py-2 text-sm font-semibold transition hover:border-accent hover:text-accent hover:shadow-[0_8px_30px_rgba(124,58,237,0.18)]"
-            >
-              <IconLinkedin /> LinkedIn
-            </a>
             {PROFILE.resume ? (
               <a
                 href={PROFILE.resume}

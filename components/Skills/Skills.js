@@ -67,13 +67,22 @@ const Skills = () => {
                   {items.map((skill) => (
                     <li key={skill.name}>
                       <div className="group flex items-center gap-2 text-sm text-gray-light-3 transition hover:text-white">
-                        <Image
-                          src={`/skills/${skill.icon}.svg`}
-                          alt=""
-                          width={22}
-                          height={22}
-                          className="h-[22px] w-[22px] object-contain transition-transform duration-200 group-hover:scale-110"
-                        />
+                        {skill.icon ? (
+                          <Image
+                            src={`/skills/${skill.icon}.svg`}
+                            alt=""
+                            width={22}
+                            height={22}
+                            className="h-[22px] w-[22px] shrink-0 object-contain transition-transform duration-200 group-hover:scale-110"
+                          />
+                        ) : (
+                          <span
+                            aria-hidden="true"
+                            className="flex h-[22px] w-[22px] shrink-0 items-center justify-center"
+                          >
+                            <span className="h-1 w-1 rounded-full bg-accent/60" />
+                          </span>
+                        )}
                         <span>{skill.name}</span>
                       </div>
                     </li>

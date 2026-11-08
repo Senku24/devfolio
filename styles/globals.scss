@@ -244,6 +244,10 @@ summary::-webkit-details-marker {
       }
     }
 
+    &.is-paused > span {
+      animation-play-state: paused;
+    }
+
     &.play > span {
       animation: sound-bars-animation 2s infinite alternate-reverse;
 
@@ -293,7 +297,6 @@ summary::-webkit-details-marker {
       width: 240vw;
       height: 240vw;
       transform: scale(0);
-      will-change: transform;
       border-radius: 50%;
       transition: all 0.4s ease;
       backface-visibility: hidden;
@@ -342,7 +345,6 @@ summary::-webkit-details-marker {
   .progress-bar {
     height: 0.2rem;
     transform-origin: left;
-    will-change: transform;
     transform: scaleX(0);
     @apply w-full bg-white;
   }

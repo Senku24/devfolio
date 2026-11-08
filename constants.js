@@ -5,7 +5,7 @@ export const METADATA = {
     "Nixon Paul is a Software Engineer and Full-Stack Developer in Gurugram, building SaaS products, modern web systems, and practical AI tools.",
   // Absolute primary origin used for canonical, Open Graph, sitemap and AEO.
   // Override at build time with NEXT_PUBLIC_SITE_URL if the final domain differs.
-  siteUrl: process.env.NEXT_PUBLIC_SITE_URL || "https://nixonpaul.dev",
+  siteUrl: process.env.NEXT_PUBLIC_SITE_URL || "https://www.paulnixon.in",
   // TODO(owner): X/Twitter handle, without @, or leave empty
   twitterHandle: "",
   keywords: [
@@ -83,7 +83,7 @@ export const FAQS = [
   {
     question: "What technologies does Nixon use?",
     answer:
-      "His toolkit includes React, Next.js, TypeScript, JavaScript, Node.js, Express, PostgreSQL, MongoDB, Prisma, Python, spaCy and RAG, alongside Git, Docker, GitHub Actions and Vercel.",
+      "His toolkit includes React, Next.js, TypeScript, JavaScript, Node.js, Express, Bun, PostgreSQL, MongoDB, Prisma, Redis, Python, spaCy, RAG and LLM APIs, alongside Git, Docker, GitHub Actions and Vercel.",
   },
   {
     question: "Is Nixon Paul available for roles or collaborations?",
@@ -93,7 +93,7 @@ export const FAQS = [
   {
     question: "Where can I see Nixon's projects?",
     answer:
-      "The Projects section covers CodexIQ, GreenWallet AI, ShelfLife, Resume Analyzer and CEX API, with source links for each project on GitHub.",
+      "The Projects section covers CodexIQ, GreenWallet AI, Higgsfield AI, Mist, Kalshi and Devfolio, with source links for each project on GitHub.",
   },
 ];
 
@@ -108,7 +108,7 @@ export const EXPERIENCE = [
     location: "Remote",
     logo: "/images/company/virtusa.jpg",
     description:
-      "Built and supported features for enterprise web applications in a structured engineering environment. Worked across frontend and backend workflows, tightening implementation quality and delivery.",
+      "Built and supported features for enterprise web applications. Worked across frontend and backend workflows, with a focus on implementation quality and delivery.",
     skills: ["JavaScript", "Full-Stack Development"],
   },
   {
@@ -128,7 +128,7 @@ export const EDUCATION = {
   school: "Vellore Institute of Technology",
   short: "VIT",
   degree: "Master of Technology — Computer Science",
-  dates: "Aug 2021 – Oct 2026",
+  dates: "2021 – 2026",
   logo: "/images/company/vit.jpg",
   note: "Computer Science · full-stack systems, AI applications, product engineering",
 };
@@ -154,26 +154,23 @@ export const SKILLS = {
     { name: "Node.js", icon: "nodejs" },
     { name: "Express", icon: "express" },
     { name: "REST APIs", icon: "rest" },
-    { name: "Java", icon: "java" },
+    { name: "Bun", icon: "bun" },
   ],
   "Databases & Data": [
     { name: "PostgreSQL", icon: "postgresql" },
     { name: "MongoDB", icon: "mongodb" },
     { name: "Prisma", icon: "prisma" },
+    { name: "Redis" },
   ],
   "AI / ML": [
     { name: "Python", icon: "python" },
     { name: "spaCy", icon: "spacy" },
     { name: "RAG", icon: "rag" },
+    { name: "LLM APIs (Gemini, OpenRouter)" },
   ],
   "AI Tools": [
     { name: "Claude Code", icon: "claude" },
     { name: "Cursor", icon: "cursor" },
-  ],
-  "Real-time": [
-    { name: "WebSockets", icon: "websockets" },
-    { name: "WebRTC", icon: "webrtc" },
-    { name: "Pub/Sub", icon: "pubsub" },
   ],
   "DevOps / Infra": [
     { name: "Git", icon: "git" },
@@ -184,64 +181,95 @@ export const SKILLS = {
 };
 
 export const EXPLORING = [
-  "RAG",
   "AI Agents",
   "Multimodal Agents",
   "LLM Observability",
   "Evaluations",
 ];
 
-// outcome/role are shown on the card when present; `live` renders a Live link
-// only when a deployment exists. TODO(owner): add outcome, role and live URLs.
+// Pinned GitHub repositories, in the order shown on github.com/Senku24.
+// live URLs are added only when the owner supplies one.
 export const PROJECTS = [
   {
     name: "CodexIQ",
-    imageKey: "codexiq",
-    outcome: "Understand any codebase in minutes, not weeks.",
-    role: "",
-    gradient: ["#0F172A", "#1E293B"],
+    image: "/projects/codexiq.webp",
+    description:
+      "Ask questions about any GitHub repo; get answers with cited code and API maps.",
     repo: "https://github.com/Senku24/codexIQ",
     live: "",
-    tech: ["typescript", "react", "nextjs", "postgresql", "prisma"],
+    tech: ["TypeScript", "React", "Next.js", "PostgreSQL", "Prisma"],
+    icon: "code",
+    tone: "violet",
   },
   {
     name: "GreenWallet AI",
-    imageKey: "greenwallet",
-    outcome: "AI-powered finance that actually changes habits.",
-    role: "",
-    gradient: ["#14532D", "#166534"],
+    image: "/projects/greenwallet.webp",
+    description:
+      "AI finance app for Gen-Z: spending analysis, savings forecasts, ethical investing.",
     repo: "https://github.com/Senku24/greenWallet",
     live: "",
-    tech: ["python", "react", "typescript", "tailwindcss"],
+    tech: ["Python", "React", "TypeScript", "Tailwind CSS"],
+    icon: "leaf",
+    tone: "green",
   },
   {
-    name: "ShelfLife",
-    imageKey: "shelflife",
-    outcome: "Household inventory that stops food from going to waste.",
-    role: "",
-    gradient: ["#1E3A5F", "#0F172A"],
-    repo: "https://github.com/Senku24/shelf-life-inventory-tracker",
+    name: "Higgsfield AI",
+    image: "/projects/higgsfield.webp",
+    description:
+      "Inspired by Higgsfield: create custom AI avatars and turn text prompts into videos.",
+    repo: "https://github.com/Senku24/Higgsfield_AI",
     live: "",
-    tech: ["javascript", "react", "nodejs", "mongodb"],
+    tech: [
+      "React",
+      "Bun",
+      "Express",
+      "Prisma",
+      "PostgreSQL",
+      "Gemini API",
+      "OpenRouter",
+    ],
+    icon: "sparkles",
+    tone: "magenta",
   },
   {
-    name: "Resume Analyzer",
-    imageKey: "resume-analyzer",
-    outcome: "NLP scoring for resume–job fit without a black box.",
-    role: "",
-    gradient: ["#3F1D2E", "#1F2937"],
-    repo: "https://github.com/Senku24/NLP-based-Resume-Analyzer",
+    name: "Mist",
+    image: "/projects/mist.webp",
+    description:
+      "Online compiler: run multi-language code in the browser via a Redis worker queue.",
+    repo: "https://github.com/Senku24/Mist--Online-compiler",
     live: "",
-    tech: ["python"],
+    tech: [
+      "React",
+      "Bun",
+      "Express",
+      "TypeScript",
+      "PostgreSQL",
+      "Prisma",
+      "Redis",
+    ],
+    icon: "terminal",
+    tone: "cyan",
   },
   {
-    name: "CEX API",
-    imageKey: "cex",
-    outcome: "Typed auth and persistence for trading-account workflows.",
-    role: "",
-    gradient: ["#111827", "#1F2937"],
-    repo: "https://github.com/Senku24/cex",
+    name: "Kalshi",
+    image: "/projects/kalshi.webp",
+    description:
+      "Prediction-market app: trade YES/NO opinions with virtual credits.",
+    repo: "https://github.com/Senku24/kalshi",
     live: "",
-    tech: ["nodejs", "express", "prisma", "postgresql"],
+    tech: ["Next.js", "React", "TypeScript", "Express", "MongoDB", "Bun", "Turborepo"],
+    icon: "chart",
+    tone: "blue",
+  },
+  {
+    name: "Devfolio",
+    image: "/projects/devfolio-current.webp",
+    description: "The source of this portfolio: Next.js, GSAP and Tailwind.",
+    repo: "https://github.com/Senku24/devfolio",
+    live: "",
+    tech: ["Next.js", "GSAP", "Tailwind CSS"],
+    icon: "layers",
+    tone: "lime",
   },
 ];
+

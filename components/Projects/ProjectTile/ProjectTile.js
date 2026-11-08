@@ -1,136 +1,97 @@
-import { useEffect, useRef } from "react";
 import Image from "next/image";
-import VanillaTilt from "vanilla-tilt";
+import ProjectIcon from "../ProjectIcon";
 import styles from "./ProjectTile.module.scss";
-import { PROJECT_IMAGES } from "../images";
 
-const tiltOptions = {
-  max: 5,
-  speed: 400,
-  glare: true,
-  "max-glare": 0.2,
-  gyroscope: false,
+const TONES = {
+  violet: { from: "#241a3f", accent: "#a855ff" },
+  green: { from: "#12351f", accent: "#c8f542" },
+  magenta: { from: "#3b1630", accent: "#f472b6" },
+  cyan: { from: "#0f2f36", accent: "#22d3ee" },
+  blue: { from: "#12233f", accent: "#60a5fa" },
+  lime: { from: "#26300f", accent: "#c8f542" },
 };
 
 const ProjectTile = ({ project, classes, isDesktop }) => {
-  const projectCard = useRef(null);
-
-  const { name, imageKey, outcome, role, gradient, repo, live, tech } = project;
-
-  const image = PROJECT_IMAGES[imageKey];
-
-  let additionalClasses = "";
-  if (classes) {
-    additionalClasses = classes;
-  }
-
-  useEffect(() => {
-    const node = projectCard.current;
-    VanillaTilt.init(node, tiltOptions);
-    return () => node?.vanillaTilt?.destroy();
-  }, []);
+  const { name, description, repo, live, tech, icon, tone, image } = project;
+  const palette = TONES[tone] || TONES.violet;
 
   return (
-    <div
-      className={`overflow-hidden rounded-3xl snap-start ${additionalClasses}`}
+    <article
+      className={`${styles.projectTile} ${classes || ""} group relative flex flex-col overflow-hidden rounded-3xl border border-white/10`}
       style={{
-        maxWidth: isDesktop ? "calc(100vw - 2rem)" : "calc(100vw - 4rem)",
-        flex: "1 0 auto",
-        WebkitMaskImage: "-webkit-radial-gradient(white, black)",
+        background: `linear-gradient(145deg, ${palette.from} 0%, #0b0b10 74%)`,
+        width: isDesktop ? "38rem" : "calc(100vw - 4rem)",
+        maxWidth: "calc(100vw - 2rem)",
+        flex: "0 0 auto",
       }}
     >
-      <div
-        ref={projectCard}
-        className={`${styles.projectTile} rounded-3xl relative p-6 flex flex-col justify-between max-w-full`}
-        style={{
-          background: `linear-gradient(90deg, ${gradient[0]} 0%, ${gradient[1]} 100%)`,
-        }}
-      >
-        <Image
-          src="/project-bg.svg"
-          alt=""
-          className="absolute h-full w-full left-0 top-0 rounded-3xl object-cover opacity-20"
-          fill
-        />
+      <a
+        href={repo}
+        target="_blank"
+        rel="noreferrer"
+        aria-label={`Open ${name} repository on GitHub`}
+        className="absolute inset-0 z-20 rounded-3xl"
+      />
+
+      <div className="relative h-40 shrink-0 overflow-hidden">
         <Image
           src={image}
-          alt={`${name} project preview`}
-          placeholder="blur"
+          alt={`${name} interface preview`}
           fill
-          sizes="(min-width: 1024px) 60vw, 90vw"
-          className={styles.projectImage}
+          sizes="(min-width: 1024px) 38rem, calc(100vw - 4rem)"
+          className="object-cover object-top transition-transform duration-500 group-hover:scale-[1.03]"
         />
-        {!isDesktop && (
-          <div
-            className="absolute bottom-0 left-0 w-full h-20"
+        <div className="absolute inset-0 bg-gradient-to-t from-[#0b0b10] via-[#0b0b10]/20 to-transparent" />
+      </div>
+
+      <div className="pointer-events-none relative z-10 flex flex-1 flex-col p-6 pt-4">
+        <div className="flex items-center gap-3">
+          <span
+            className="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl border border-white/15"
             style={{
-              background: `linear-gradient(0deg, ${gradient[0]} 10%, rgba(0,0,0,0) 100%)`,
+              background: `${palette.accent}1f`,
+              color: palette.accent,
             }}
-          />
-        )}
-        <h3
-          className="font-medium text-2xl sm:text-3xl z-10 pl-2 pt-2 transform-gpu"
-          style={{ transform: "translateZ(3rem)" }}
-        >
-          {name}
-        </h3>
-        <div
-          className={`
-            ${styles.techIcons} w-1/2 h-full absolute left-24 top-0 sm:flex items-center hidden
-          `}
-        >
-          <div className="flex flex-col pb-8">
-            {tech.map((el, i) => (
-              <Image
-                className={`h-[45px] w-[45px] object-contain ${
-                  i % 2 === 0 ? "ml-16" : ""
-                } mb-4`}
-                src={`/projects/tech/${el}.svg`}
-                alt=""
-                height={45}
-                width={45}
-                key={el}
-              />
-            ))}
-          </div>
+          >
+            <ProjectIcon name={icon} />
+          </span>
+          <h3 className="text-3xl font-semibold text-white">{name}</h3>
+          <span className="ml-auto font-mono text-[10px] uppercase tracking-[0.2em] text-white/35">
+            Pinned
+          </span>
         </div>
-        <div
-          className="z-10 pl-2 transform-gpu"
-          style={{ transform: "translateZ(0.8rem)" }}
-        >
-          {role ? (
-            <p className="font-mono text-xs uppercase tracking-wider text-white/70">
-              {role}
-            </p>
+        <p className="mt-3 max-w-md text-lg leading-relaxed text-white/70">
+          {description}
+        </p>
+
+        <ul aria-label={`${name} stack`} className="mt-5 flex flex-wrap gap-2">
+          {tech.map((techItem) => (
+            <li
+              key={techItem}
+              className="rounded-full border border-white/[0.12] bg-white/[0.04] px-3 py-1 font-mono text-[10px] uppercase tracking-wider text-white/60"
+            >
+              {techItem}
+            </li>
+          ))}
+        </ul>
+
+        <div className="mt-auto flex items-center justify-between gap-4 pt-6">
+          <span className="inline-flex items-center gap-1.5 font-mono text-xs uppercase tracking-wider text-white/70 transition group-hover:text-accent">
+            View repository <span aria-hidden="true">↗</span>
+          </span>
+          {live ? (
+            <a
+              href={live}
+              target="_blank"
+              rel="noreferrer"
+              className="pointer-events-auto relative z-30 inline-flex items-center gap-1.5 font-mono text-xs uppercase tracking-wider text-accent hover:underline"
+            >
+              Live <span aria-hidden="true">↗</span>
+            </a>
           ) : null}
-          <p className="text-lg tracking-wide font-medium text-white">
-            {outcome}
-          </p>
-          <div className="mt-3 flex flex-wrap items-center gap-4">
-            {live ? (
-              <a
-                href={live}
-                target="_blank"
-                rel="noreferrer"
-                className="link font-mono text-xs uppercase tracking-wider text-accent"
-              >
-                Live ↗
-              </a>
-            ) : null}
-            {repo ? (
-              <a
-                href={repo}
-                target="_blank"
-                rel="noreferrer"
-                className="link font-mono text-xs uppercase tracking-wider text-white"
-              >
-                Code ↗
-              </a>
-            ) : null}
-          </div>
         </div>
       </div>
-    </div>
+    </article>
   );
 };
 

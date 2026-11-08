@@ -1,4 +1,5 @@
-import { useEffect, useRef } from "react";
+import { useRef } from "react";
+import useIsomorphicLayoutEffect from "utils/use-isomorphic-layout-effect";
 import { MENULINKS, PROJECTS } from "../../constants";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
@@ -56,7 +57,7 @@ const Projects = ({ isDesktop, clientHeight, prefersReducedMotion = false }) => 
     return [timeline, scrollTrigger];
   };
 
-  useEffect(() => {
+  useIsomorphicLayoutEffect(() => {
     const section = sectionRef.current;
     const projectWrapper = section.querySelector(".project-wrapper");
     const reduced = prefersReducedMotion;
@@ -92,12 +93,12 @@ const Projects = ({ isDesktop, clientHeight, prefersReducedMotion = false }) => 
       id={MENULINKS[3].ref}
       aria-label="Projects"
       className={`${
-        isDesktop && !prefersReducedMotion ? "min-h-screen" : ""
-      } w-full relative select-none section-container transform-gpu`}
+        isDesktop && !prefersReducedMotion ? "min-h-screen pt-24" : ""
+      } w-full relative select-none section-container`}
     >
       <div className="flex flex-col justify-center h-full">
         <div
-          className="flex flex-col inner-container transform-gpu"
+          className="flex flex-col inner-container"
           ref={sectionTitleRef}
         >
           <p className="uppercase tracking-widest text-gray-light-1 staggered-reveal">
@@ -107,13 +108,21 @@ const Projects = ({ isDesktop, clientHeight, prefersReducedMotion = false }) => 
             My Projects
           </h2>
           <p className="text-[1.65rem] font-medium md:max-w-lg max-w-sm mt-2 staggered-reveal">
-            Some things I&apos;ve built with love, expertise and a pinch of
-            magical ingredients.{" "}
+            Six builds from my GitHub — full-stack apps, AI tools and developer
+            tooling.
           </p>
+          <a
+            href="https://github.com/Senku24?tab=repositories"
+            target="_blank"
+            rel="noreferrer"
+            className="link mt-5 inline-flex w-fit items-center gap-1.5 font-mono text-xs uppercase tracking-wider text-accent hover:underline"
+          >
+            See all repositories on GitHub <span aria-hidden="true">↗</span>
+          </a>
         </div>
         <div
           className={`${
-            clientHeight > 650 ? "mt-12" : "mt-8"
+            clientHeight > 650 ? "mt-8" : "mt-6"
           } flex project-wrapper no-scrollbar w-fit staggered-reveal`}
         >
           {PROJECTS.map((project, index) => (

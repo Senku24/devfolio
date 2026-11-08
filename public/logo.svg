@@ -1,5 +1,10 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 40" fill="none">
-  <rect width="40" height="40" rx="2" fill="#0a0a0a"/>
-  <rect x="1" y="1" width="38" height="38" rx="1" stroke="#c8f542" stroke-width="1.2"/>
-  <text x="20" y="26" text-anchor="middle" font-family="ui-sans-serif, system-ui, sans-serif" font-size="15" font-weight="700" fill="#f4f4f1" letter-spacing="0.5">NP</text>
+<svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 64 64">
+  <rect width="64" height="64" rx="12" fill="#c8f542"/>
+  <g fill="#0a0a0a" transform="translate(32 32) scale(1) translate(-32 -32)">
+    
+  <g transform="translate(-1 0)">
+    <path d="M10 48V16h7.5l9 18V16H34v32h-7.5l-9-18v18z"/>
+    <path fill-rule="evenodd" d="M38 16h9a9 9 0 0 1 0 18h-1.5v14H38zM45.5 22.5h1.5a2.5 2.5 0 0 1 0 5h-1.5z"/>
+  </g>
+  </g>
 </svg>

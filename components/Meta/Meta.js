@@ -119,7 +119,7 @@ const Meta = () => {
           item: {
             "@type": "SoftwareSourceCode",
             name: project.name,
-            description: project.outcome,
+            description: project.description,
             codeRepository: project.repo || undefined,
             url: project.live || undefined,
             programmingLanguage: project.tech
@@ -158,11 +158,11 @@ const Meta = () => {
       <meta name="format-detection" content="telephone=no" />
       <meta name="theme-color" content={METADATA.themeColor} />
 
-      <link rel="icon" href="/logo.svg" type="image/svg+xml" />
-      <link rel="icon" href="/favicons/favicon.ico" sizes="any" />
-      <link rel="icon" type="image/png" sizes="32x32" href="/favicons/favicon-32x32.png" />
-      <link rel="icon" type="image/png" sizes="16x16" href="/favicons/favicon-16x16.png" />
-      <link rel="apple-touch-icon" sizes="180x180" href="/favicons/apple-touch-icon.png" />
+      <link rel="icon" href="/logo.svg?v=2" type="image/svg+xml" />
+      <link rel="icon" href="/favicons/favicon.ico?v=2" sizes="any" />
+      <link rel="icon" type="image/png" sizes="32x32" href="/favicons/favicon-32x32.png?v=2" />
+      <link rel="icon" type="image/png" sizes="16x16" href="/favicons/favicon-16x16.png?v=2" />
+      <link rel="apple-touch-icon" sizes="180x180" href="/favicons/apple-touch-icon.png?v=2" />
       <link rel="manifest" href="/manifest.json" />
       <link rel="sitemap" type="application/xml" href="/sitemap.xml" />
       <link

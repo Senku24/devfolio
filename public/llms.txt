@@ -2,9 +2,9 @@
 
 > Nixon Paul is a Software Engineer and Full-Stack Developer in Gurugram, India. He builds SaaS products, modern web systems and practical AI tools across the stack — interfaces, APIs, data and deployment.
 
-Canonical: https://nixonpaul.dev/
-Sitemap: https://nixonpaul.dev/sitemap.xml
-Resume: https://nixonpaul.dev/resume.pdf
+Canonical: https://www.paulnixon.in/
+Sitemap: https://www.paulnixon.in/sitemap.xml
+Resume: https://www.paulnixon.in/resume.pdf
 Contact: nixonpaul.dev@gmail.com
 
 ## Profile
@@ -14,7 +14,7 @@ Contact: nixonpaul.dev@gmail.com
 - Location: Gurugram, India
 - GitHub: https://github.com/Senku24
 - LinkedIn: https://www.linkedin.com/in/nixonpaul24/
-- Education: Master of Technology — Computer Science, Vellore Institute of Technology (Aug 2021 – Oct 2026)
+- Education: Master of Technology — Computer Science, Vellore Institute of Technology (2021 – 2026)
 - Certification: Microsoft Certified: Azure AI Fundamentals (AI-900), issued Aug 2024
 
 ## About
@@ -23,34 +23,35 @@ Nixon builds production software across the stack: interfaces, APIs, data and th
 
 ## Skills
 
-React, Next.js, TypeScript, JavaScript, Tailwind CSS, Node.js, Express, REST APIs, Java, PostgreSQL, MongoDB, Prisma, Python, spaCy, RAG, Claude Code, Cursor, WebSockets, WebRTC, Pub/Sub, Git, Docker, GitHub Actions, Vercel.
+React, Next.js, TypeScript, JavaScript, Tailwind CSS, Node.js, Express, REST APIs, Bun, PostgreSQL, MongoDB, Prisma, Redis, Python, spaCy, RAG, LLM APIs (Gemini, OpenRouter), Claude Code, Cursor, Git, Docker, GitHub Actions, Vercel.
 
-Currently exploring: RAG, AI Agents, Multimodal Agents, LLM Observability, Evaluations.
+Currently exploring: AI Agents, Multimodal Agents, LLM Observability, Evaluations.
 
 ## Experience
 
-- Virtusa — Software Engineer Intern (Aug 2025 – Jun 2026, Remote). Built and supported features for enterprise web applications, working across frontend and backend workflows.
+- Virtusa — Software Engineer Intern (Aug 2025 – Jun 2026, Remote). Built and supported features for enterprise web applications. Worked across frontend and backend workflows, with a focus on implementation quality and delivery.
 - Cluster Protocol — Frontend Developer (Jan 2026 – Apr 2026, Noida, India · Hybrid). Developed responsive, component-driven interfaces with React, built reusable UI, integrated REST APIs and focused on performance and maintainable frontend architecture.
 
 ## Projects
 
-- CodexIQ — Understand any codebase in minutes, not weeks. Source: https://github.com/Senku24/codexIQ
-- GreenWallet AI — AI-powered finance that actually changes habits. Source: https://github.com/Senku24/greenWallet
-- ShelfLife — Household inventory that stops food from going to waste. Source: https://github.com/Senku24/shelf-life-inventory-tracker
-- Resume Analyzer — NLP scoring for resume–job fit without a black box. Source: https://github.com/Senku24/NLP-based-Resume-Analyzer
-- CEX API — Typed auth and persistence for trading-account workflows. Source: https://github.com/Senku24/cex
+- CodexIQ — Ask questions about any GitHub repo; get answers with cited code and API maps. Source: https://github.com/Senku24/codexIQ
+- GreenWallet AI — AI finance app for Gen-Z: spending analysis, savings forecasts, ethical investing. Source: https://github.com/Senku24/greenWallet
+- Higgsfield AI — Inspired by Higgsfield: create custom AI avatars and turn text prompts into videos. Source: https://github.com/Senku24/Higgsfield_AI
+- Mist — Online compiler: run multi-language code in the browser via a Redis worker queue. Source: https://github.com/Senku24/Mist--Online-compiler
+- Kalshi — Prediction-market app: trade YES/NO opinions with virtual credits. Source: https://github.com/Senku24/kalshi
+- Devfolio — The source of this portfolio: Next.js, GSAP and Tailwind. Source: https://github.com/Senku24/devfolio
 
 ## FAQ
 
 - Who is Nixon Paul? Nixon Paul is a Software Engineer and Full-Stack Developer based in Gurugram, India. He builds SaaS products, modern web systems and practical AI tools.
 - What kind of work does Nixon do? He works across the stack — interfaces, APIs, data and deployment — with a focus on full-stack products, AI-powered tools and real-time systems.
-- What technologies does Nixon use? React, Next.js, TypeScript, JavaScript, Node.js, Express, PostgreSQL, MongoDB, Prisma, Python, spaCy and RAG, alongside Git, Docker, GitHub Actions and Vercel.
+- What technologies does Nixon use? React, Next.js, TypeScript, JavaScript, Node.js, Express, Bun, PostgreSQL, MongoDB, Prisma, Redis, Python, spaCy, RAG and LLM APIs, alongside Git, Docker, GitHub Actions and Vercel.
 - Is Nixon Paul available for roles or collaborations? Yes. He is open to engineering roles and collaborations. The fastest way to reach him is nixonpaul.dev@gmail.com, or connect on LinkedIn.
-- Where can I see Nixon's projects? The Projects section covers CodexIQ, GreenWallet AI, ShelfLife, Resume Analyzer and CEX API, with source links for each project on GitHub.
+- Where can I see Nixon's projects? The Projects section covers CodexIQ, GreenWallet AI, Higgsfield AI, Mist, Kalshi and Devfolio, with source links for each project on GitHub.
 
 ## Contact
 
 - Email: nixonpaul.dev@gmail.com
 - GitHub: https://github.com/Senku24
 - LinkedIn: https://www.linkedin.com/in/nixonpaul24/
-- Portfolio: https://nixonpaul.dev/
+- Portfolio: https://www.paulnixon.in/
