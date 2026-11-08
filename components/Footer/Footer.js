@@ -2,6 +2,7 @@
 import FooterBg from "./FooterBg/FooterBg";
 import { PROFILE } from "../../constants";
 import { IconGithub, IconLinkedin, IconMail } from "@/components/Icons";
+import EmailLink from "@/components/EmailLink/EmailLink";
 
 const ResumeIcon = () => (
   <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true">
@@ -29,13 +30,13 @@ const Footer = () => (
             <IconLinkedin /> LinkedIn
           </a>
           {PROFILE.email ? (
-            <a
-              href={`mailto:${PROFILE.email}`}
+            <EmailLink
+              email={PROFILE.email}
               aria-label={`Email ${PROFILE.email}`}
               className="inline-flex items-center gap-2 text-sm font-semibold"
             >
               <IconMail /> {PROFILE.email}
-            </a>
+            </EmailLink>
           ) : null}
           {PROFILE.resume ? (
             <a href={PROFILE.resume} target="_blank" rel="noreferrer" className="inline-flex items-center gap-2 text-sm font-semibold">

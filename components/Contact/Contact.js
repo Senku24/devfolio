@@ -4,6 +4,8 @@ import gsap from "gsap";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
 import Profiles from "../Profiles/Profiles";
 import Button from "../Button/Button";
+import EmailLink from "../EmailLink/EmailLink";
+import CopyEmailButton from "./CopyEmailButton";
 import { MENULINKS, PROFILE } from "../../constants";
 
 const Contact = () => {
@@ -48,12 +50,15 @@ const Contact = () => {
             <Profiles />
           </div>
           {PROFILE.email ? (
-            <a
-              href={`mailto:${PROFILE.email}`}
-              className="staggered-reveal mt-4 inline-flex font-mono text-base text-accent underline-offset-4 hover:underline"
-            >
-              {PROFILE.email}
-            </a>
+            <div className="staggered-reveal mt-4 flex flex-wrap items-center gap-4">
+              <EmailLink
+                email={PROFILE.email}
+                className="inline-flex font-mono text-base text-accent underline-offset-4 hover:underline"
+              >
+                {PROFILE.email}
+              </EmailLink>
+              <CopyEmailButton />
+            </div>
           ) : null}
           <div className="staggered-reveal flex flex-wrap gap-3">
             <Button href={PROFILE.linkedin} classes="link" type="primary" target="_blank" rel="noreferrer">
