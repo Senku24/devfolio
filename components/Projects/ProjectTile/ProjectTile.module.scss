@@ -1,5 +1,5 @@
 .projectTile {
-  height: 35rem;
+  height: 25rem;
   box-shadow: 0 16px 50px rgba(0, 0, 0, 0.24);
   transition: border-color 0.3s ease, box-shadow 0.3s ease;
 
@@ -9,6 +9,6 @@
   }
 
   @media (max-width: 480px) {
-    height: 37rem;
+    height: 31rem;
   }
 }

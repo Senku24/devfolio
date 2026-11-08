@@ -93,7 +93,7 @@ const Projects = ({ isDesktop, clientHeight, prefersReducedMotion = false }) => 
       id={MENULINKS[3].ref}
       aria-label="Projects"
       className={`${
-        isDesktop && !prefersReducedMotion ? "min-h-screen" : ""
+        isDesktop && !prefersReducedMotion ? "min-h-screen pt-24" : ""
       } w-full relative select-none section-container`}
     >
       <div className="flex flex-col justify-center h-full">
@@ -122,7 +122,7 @@ const Projects = ({ isDesktop, clientHeight, prefersReducedMotion = false }) => 
         </div>
         <div
           className={`${
-            clientHeight > 650 ? "mt-12" : "mt-8"
+            clientHeight > 650 ? "mt-8" : "mt-6"
           } flex project-wrapper no-scrollbar w-fit staggered-reveal`}
         >
           {PROJECTS.map((project, index) => (

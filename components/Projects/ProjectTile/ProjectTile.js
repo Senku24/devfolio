@@ -33,31 +33,30 @@ const ProjectTile = ({ project, classes, isDesktop }) => {
         className="absolute inset-0 z-20 rounded-3xl"
       />
 
-      <div className="relative h-44 shrink-0 overflow-hidden sm:h-52">
+      <div className="relative h-40 shrink-0 overflow-hidden">
         <Image
           src={image}
           alt={`${name} interface preview`}
           fill
           sizes="(min-width: 1024px) 38rem, calc(100vw - 4rem)"
-          className="object-cover transition-transform duration-500 group-hover:scale-[1.03]"
+          className="object-cover object-top transition-transform duration-500 group-hover:scale-[1.03]"
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-[#0b0b10] via-[#0b0b10]/25 to-transparent" />
-        <span
-          className="absolute bottom-4 left-6 z-10 flex h-14 w-14 items-center justify-center rounded-2xl border border-white/20 shadow-lg"
-          style={{
-            background: `${palette.accent}22`,
-            color: palette.accent,
-            backdropFilter: "blur(8px)",
-          }}
-        >
-          <ProjectIcon name={icon} />
-        </span>
+        <div className="absolute inset-0 bg-gradient-to-t from-[#0b0b10] via-[#0b0b10]/20 to-transparent" />
       </div>
 
       <div className="pointer-events-none relative z-10 flex flex-1 flex-col p-6 pt-4">
-        <div className="flex items-start justify-between gap-3">
+        <div className="flex items-center gap-3">
+          <span
+            className="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl border border-white/15"
+            style={{
+              background: `${palette.accent}1f`,
+              color: palette.accent,
+            }}
+          >
+            <ProjectIcon name={icon} />
+          </span>
           <h3 className="text-3xl font-semibold text-white">{name}</h3>
-          <span className="pt-1.5 font-mono text-[10px] uppercase tracking-[0.2em] text-white/35">
+          <span className="ml-auto font-mono text-[10px] uppercase tracking-[0.2em] text-white/35">
             Pinned
           </span>
         </div>
