@@ -5,7 +5,7 @@ export const METADATA = {
     "Nixon Paul is a Software Engineer and Full-Stack Developer in Gurugram, building SaaS products, modern web systems, and practical AI tools.",
   // Absolute primary origin used for canonical, Open Graph, sitemap and AEO.
   // Override at build time with NEXT_PUBLIC_SITE_URL if the final domain differs.
-  siteUrl: process.env.NEXT_PUBLIC_SITE_URL || "https://nixonpaul.dev",
+  siteUrl: process.env.NEXT_PUBLIC_SITE_URL || "https://www.paulnixon.in",
   // TODO(owner): X/Twitter handle, without @, or leave empty
   twitterHandle: "",
   keywords: [

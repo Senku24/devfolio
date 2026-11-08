@@ -4,7 +4,7 @@ import { fileURLToPath } from "node:url";
 
 const root = path.dirname(path.dirname(fileURLToPath(import.meta.url)));
 const origin = (
-  process.env.NEXT_PUBLIC_SITE_URL || "https://nixonpaul.dev"
+  process.env.NEXT_PUBLIC_SITE_URL || "https://www.paulnixon.in"
 ).replace(/\/$/, "");
 
 const sitemapPath = path.join(root, "public", "sitemap.xml");

@@ -2,9 +2,9 @@
 
 > Nixon Paul is a Software Engineer and Full-Stack Developer in Gurugram, India. He builds SaaS products, modern web systems and practical AI tools across the stack — interfaces, APIs, data and deployment.
 
-Canonical: https://nixonpaul.dev/
-Sitemap: https://nixonpaul.dev/sitemap.xml
-Resume: https://nixonpaul.dev/resume.pdf
+Canonical: https://www.paulnixon.in/
+Sitemap: https://www.paulnixon.in/sitemap.xml
+Resume: https://www.paulnixon.in/resume.pdf
 Contact: nixonpaul.dev@gmail.com
 
 ## Profile
@@ -53,4 +53,4 @@ Currently exploring: RAG, AI Agents, Multimodal Agents, LLM Observability, Evalu
 - Email: nixonpaul.dev@gmail.com
 - GitHub: https://github.com/Senku24
 - LinkedIn: https://www.linkedin.com/in/nixonpaul24/
-- Portfolio: https://nixonpaul.dev/
+- Portfolio: https://www.paulnixon.in/
