@@ -12,7 +12,7 @@ const FooterBg = () => {
   return (
     <div
       ref={ref}
-      className={`${styles.top} ${inView ? styles.isActive : ""}`}
+      className={styles.top}
       aria-hidden="true"
     >
       <Meteors number={6} active={inView} />
