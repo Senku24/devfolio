@@ -34,11 +34,12 @@ Currently exploring: AI Agents, Multimodal Agents, LLM Observability, Evaluation
 
 ## Projects
 
-- CodexIQ — Understand any codebase in minutes, not weeks. Source: https://github.com/Senku24/codexIQ
-- GreenWallet AI — AI-powered finance that actually changes habits. Source: https://github.com/Senku24/greenWallet
-- ShelfLife — Household inventory that stops food from going to waste. Source: https://github.com/Senku24/shelf-life-inventory-tracker
-- Resume Analyzer — NLP scoring for resume–job fit without a black box. Source: https://github.com/Senku24/NLP-based-Resume-Analyzer
-- CEX API — Typed auth and persistence for trading-account workflows. Source: https://github.com/Senku24/cex
+- CodexIQ — Ask questions about any GitHub repo; get answers with cited code and API maps. Source: https://github.com/Senku24/codexIQ
+- GreenWallet AI — AI finance app for Gen-Z: spending analysis, savings forecasts, ethical investing. Source: https://github.com/Senku24/greenWallet
+- Higgsfield AI — Inspired by Higgsfield: create custom AI avatars and turn text prompts into videos. Source: https://github.com/Senku24/Higgsfield_AI
+- Mist — Online compiler: run multi-language code in the browser via a Redis worker queue. Source: https://github.com/Senku24/Mist--Online-compiler
+- Kalshi — Prediction-market app: trade YES/NO opinions with virtual credits. Source: https://github.com/Senku24/kalshi
+- Devfolio — The source of this portfolio: Next.js, GSAP and Tailwind. Source: https://github.com/Senku24/devfolio
 
 ## FAQ
 
@@ -46,7 +47,7 @@ Currently exploring: AI Agents, Multimodal Agents, LLM Observability, Evaluation
 - What kind of work does Nixon do? He works across the stack — interfaces, APIs, data and deployment — with a focus on full-stack products, AI-powered tools and real-time systems.
 - What technologies does Nixon use? React, Next.js, TypeScript, JavaScript, Node.js, Express, Bun, PostgreSQL, MongoDB, Prisma, Redis, Python, spaCy, RAG and LLM APIs, alongside Git, Docker, GitHub Actions and Vercel.
 - Is Nixon Paul available for roles or collaborations? Yes. He is open to engineering roles and collaborations. The fastest way to reach him is nixonpaul.dev@gmail.com, or connect on LinkedIn.
-- Where can I see Nixon's projects? The Projects section covers CodexIQ, GreenWallet AI, ShelfLife, Resume Analyzer and CEX API, with source links for each project on GitHub.
+- Where can I see Nixon's projects? The Projects section covers CodexIQ, GreenWallet AI, Higgsfield AI, Mist, Kalshi and Devfolio, with source links for each project on GitHub.
 
 ## Contact
 

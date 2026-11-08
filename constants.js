@@ -93,7 +93,7 @@ export const FAQS = [
   {
     question: "Where can I see Nixon's projects?",
     answer:
-      "The Projects section covers CodexIQ, GreenWallet AI, ShelfLife, Resume Analyzer and CEX API, with source links for each project on GitHub.",
+      "The Projects section covers CodexIQ, GreenWallet AI, Higgsfield AI, Mist, Kalshi and Devfolio, with source links for each project on GitHub.",
   },
 ];
 
@@ -192,6 +192,7 @@ export const EXPLORING = [
 export const PROJECTS = [
   {
     name: "CodexIQ",
+    image: "/projects/codexiq.webp",
     description:
       "Ask questions about any GitHub repo; get answers with cited code and API maps.",
     repo: "https://github.com/Senku24/codexIQ",
@@ -202,6 +203,7 @@ export const PROJECTS = [
   },
   {
     name: "GreenWallet AI",
+    image: "/projects/greenwallet.webp",
     description:
       "AI finance app for Gen-Z: spending analysis, savings forecasts, ethical investing.",
     repo: "https://github.com/Senku24/greenWallet",
@@ -212,6 +214,7 @@ export const PROJECTS = [
   },
   {
     name: "Higgsfield AI",
+    image: "/projects/higgsfield.webp",
     description:
       "Inspired by Higgsfield: create custom AI avatars and turn text prompts into videos.",
     repo: "https://github.com/Senku24/Higgsfield_AI",
@@ -230,6 +233,7 @@ export const PROJECTS = [
   },
   {
     name: "Mist",
+    image: "/projects/mist.webp",
     description:
       "Online compiler: run multi-language code in the browser via a Redis worker queue.",
     repo: "https://github.com/Senku24/Mist--Online-compiler",
@@ -248,6 +252,7 @@ export const PROJECTS = [
   },
   {
     name: "Kalshi",
+    image: "/projects/kalshi.webp",
     description:
       "Prediction-market app: trade YES/NO opinions with virtual credits.",
     repo: "https://github.com/Senku24/kalshi",
@@ -258,6 +263,7 @@ export const PROJECTS = [
   },
   {
     name: "Devfolio",
+    image: "/projects/devfolio-current.webp",
     description: "The source of this portfolio: Next.js, GSAP and Tailwind.",
     repo: "https://github.com/Senku24/devfolio",
     live: "",

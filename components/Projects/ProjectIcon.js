@@ -38,12 +38,12 @@ const ICONS = {
 
 const ProjectIcon = ({ name }) => (
   <svg
-    width="26"
-    height="26"
+    width="30"
+    height="30"
     viewBox="0 0 24 24"
     fill="none"
     stroke="currentColor"
-    strokeWidth="1.6"
+    strokeWidth="1.8"
     strokeLinecap="round"
     strokeLinejoin="round"
     aria-hidden="true"
