@@ -29,7 +29,7 @@ Currently exploring: AI Agents, Multimodal Agents, LLM Observability, Evaluation
 
 ## Experience
 
-- Virtusa — Software Engineer Intern (Aug 2025 – Jun 2026, Remote). Built and supported features for enterprise web applications, working across frontend and backend workflows.
+- Virtusa — Software Engineer Intern (Aug 2025 – Jun 2026, Remote). Built and supported features for enterprise web applications. Worked across frontend and backend workflows, with a focus on implementation quality and delivery.
 - Cluster Protocol — Frontend Developer (Jan 2026 – Apr 2026, Noida, India · Hybrid). Developed responsive, component-driven interfaces with React, built reusable UI, integrated REST APIs and focused on performance and maintainable frontend architecture.
 
 ## Projects
@@ -44,7 +44,7 @@ Currently exploring: AI Agents, Multimodal Agents, LLM Observability, Evaluation
 
 - Who is Nixon Paul? Nixon Paul is a Software Engineer and Full-Stack Developer based in Gurugram, India. He builds SaaS products, modern web systems and practical AI tools.
 - What kind of work does Nixon do? He works across the stack — interfaces, APIs, data and deployment — with a focus on full-stack products, AI-powered tools and real-time systems.
-- What technologies does Nixon use? React, Next.js, TypeScript, JavaScript, Node.js, Express, PostgreSQL, MongoDB, Prisma, Python, spaCy and RAG, alongside Git, Docker, GitHub Actions and Vercel.
+- What technologies does Nixon use? React, Next.js, TypeScript, JavaScript, Node.js, Express, Bun, PostgreSQL, MongoDB, Prisma, Redis, Python, spaCy, RAG and LLM APIs, alongside Git, Docker, GitHub Actions and Vercel.
 - Is Nixon Paul available for roles or collaborations? Yes. He is open to engineering roles and collaborations. The fastest way to reach him is nixonpaul.dev@gmail.com, or connect on LinkedIn.
 - Where can I see Nixon's projects? The Projects section covers CodexIQ, GreenWallet AI, ShelfLife, Resume Analyzer and CEX API, with source links for each project on GitHub.
 
