@@ -4,7 +4,7 @@ const FAQ = () => (
   <section
     id="faq"
     aria-labelledby="faq-heading"
-    className="section-container py-24"
+    className="section-container py-24 cv-auto"
   >
     <p className="uppercase tracking-widest text-gray-light-1">FAQ</p>
     <h2 id="faq-heading" className="mt-2 w-fit text-6xl font-medium text-gradient">

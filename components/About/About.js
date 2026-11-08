@@ -1,7 +1,5 @@
-import { useRef } from "react";
-import useIsomorphicLayoutEffect from "utils/use-isomorphic-layout-effect";
-import gsap from "gsap";
 import { ABOUT, MENULINKS } from "../../constants";
+import useInView from "utils/use-in-view";
 
 const blocks = [
   { label: "Who I am", text: ABOUT.who },
@@ -11,24 +9,7 @@ const blocks = [
 ];
 
 const About = () => {
-  const sectionRef = useRef(null);
-
-  useIsomorphicLayoutEffect(() => {
-    const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    const ctx = gsap.context(() => {
-      if (reduced) return;
-      gsap.from(".about-block", {
-        y: 20,
-        opacity: 0.55,
-        stagger: 0.08,
-        duration: 0.5,
-        ease: "power2.out",
-        immediateRender: false,
-        scrollTrigger: { trigger: sectionRef.current, start: "top 80%" },
-      });
-    }, sectionRef);
-    return () => ctx.revert();
-  }, []);
+  const [sectionRef, inView] = useInView({ threshold: 0.2 });
 
   return (
     <section
@@ -40,10 +21,13 @@ const About = () => {
       <p className="uppercase tracking-widest text-gray-light-1">About</p>
       <h2 className="mt-2 w-fit text-6xl font-medium text-gradient">A little more</h2>
       <div className="mt-12 grid gap-px bg-white/10 md:grid-cols-2">
-        {blocks.map((block) => (
+        {blocks.map((block, index) => (
           <article
             key={block.label}
-            className="about-block bg-black p-8 text-gray-light-2 transition duration-300 hover:bg-gray-dark-4"
+            className={`about-block bg-black p-8 text-gray-light-2 transition duration-300 hover:bg-gray-dark-4 reveal ${
+              inView ? "is-visible" : ""
+            }`}
+            style={{ transitionDelay: `${index * 80}ms` }}
           >
             <p className="font-mono text-[11px] uppercase tracking-[0.22em] text-accent">
               {block.label}

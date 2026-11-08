@@ -93,11 +93,11 @@ const Projects = ({ isDesktop, clientHeight, prefersReducedMotion = false }) => 
       aria-label="Projects"
       className={`${
         isDesktop && !prefersReducedMotion ? "min-h-screen" : ""
-      } w-full relative select-none section-container transform-gpu`}
+      } w-full relative select-none section-container`}
     >
       <div className="flex flex-col justify-center h-full">
         <div
-          className="flex flex-col inner-container transform-gpu"
+          className="flex flex-col inner-container"
           ref={sectionTitleRef}
         >
           <p className="uppercase tracking-widest text-gray-light-1 staggered-reveal">

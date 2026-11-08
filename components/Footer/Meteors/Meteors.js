@@ -11,7 +11,7 @@ const mulberry32 = (seed) => () => {
   return ((t ^ (t >>> 14)) >>> 0) / 4294967296;
 };
 
-const Meteors = ({ number = 10 }) => {
+const Meteors = ({ number = 10, active = true }) => {
   const meteors = useMemo(() => {
     const rand = mulberry32(number * 9301 + 49297);
     return [...new Array(number)].map(() => ({
@@ -31,7 +31,7 @@ const Meteors = ({ number = 10 }) => {
           className={cn(
             "pointer-events-none absolute left-1/2 top-1/2 h-0.5 w-0.5 rotate-[215deg] animate-meteor rounded-[9999px] bg-white shadow-[0_0_0_1px_#ffffff10]"
           )}
-          style={style}
+          style={{ ...style, animationPlayState: active ? "running" : "paused" }}
         >
           {/* Meteor Tail */}
           <div className="pointer-events-none absolute top-1/2 -z-10 h-[1px] w-[50px] -translate-y-1/2 bg-gradient-to-r from-white to-transparent" />

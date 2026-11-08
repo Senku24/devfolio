@@ -14,7 +14,9 @@ export const calibre = localFont({
 });
 
 export const jetbrains_mono = localFont({
-  src: "./JetBrainsMono/JetBrainsMono-var.ttf",
+  src: "./JetBrainsMono/JetBrainsMono-var.woff2",
+  weight: "100 800",
+  style: "normal",
   display: "swap",
   variable: "--font-jetbrains-mono",
 });

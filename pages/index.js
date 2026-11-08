@@ -34,20 +34,80 @@ export default function Home() {
     displayFancyLogs();
     const media = window.matchMedia(DESKTOP_QUERY);
     const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
-    const apply = () => {
-      setIsDesktop(media.matches);
-      setPrefersReducedMotion(reducedMotion.matches);
-      setClientHeight(window.innerHeight);
-      ScrollTrigger.refresh();
+    let lastWidth = window.innerWidth;
+    let resizeTimer;
+
+    const sync = () => {
+      const nextDesktop = media.matches;
+      const nextReduced = reducedMotion.matches;
+      const nextHeight = window.innerHeight;
+
+      setIsDesktop((previous) =>
+        previous === nextDesktop ? previous : nextDesktop
+      );
+      setPrefersReducedMotion((previous) =>
+        previous === nextReduced ? previous : nextReduced
+      );
+      setClientHeight((previous) =>
+        previous === nextHeight ? previous : nextHeight
+      );
+
+      if (window.innerWidth !== lastWidth) {
+        lastWidth = window.innerWidth;
+        ScrollTrigger.refresh();
+      }
     };
-    apply();
-    media.addEventListener("change", apply);
-    reducedMotion.addEventListener("change", apply);
-    window.addEventListener("resize", apply);
+
+    const onResize = () => {
+      clearTimeout(resizeTimer);
+      resizeTimer = setTimeout(sync, 150);
+    };
+
+    sync();
+    media.addEventListener("change", sync);
+    reducedMotion.addEventListener("change", sync);
+    window.addEventListener("resize", onResize, { passive: true });
     return () => {
-      media.removeEventListener("change", apply);
-      reducedMotion.removeEventListener("change", apply);
-      window.removeEventListener("resize", apply);
+      clearTimeout(resizeTimer);
+      media.removeEventListener("change", sync);
+      reducedMotion.removeEventListener("change", sync);
+      window.removeEventListener("resize", onResize);
+    };
+  }, []);
+
+
+  // content-visibility keeps initial work down, but it also makes hash-link
+  // positions approximate. Render those sections before the browser scrolls.
+  useEffect(() => {
+    const revealSections = () => {
+      document.querySelectorAll(".cv-auto").forEach((el) => {
+        el.style.contentVisibility = "visible";
+      });
+    };
+    const onClick = (event) => {
+      const link =
+        event.target instanceof Element
+          ? event.target.closest('a[href^="#"]')
+          : null;
+      if (!link) return;
+      const id = link.getAttribute("href").slice(1);
+      if (id && document.getElementById(id)) revealSections();
+    };
+    const onHashChange = () => {
+      if (!window.location.hash) return;
+      revealSections();
+      const target = document.getElementById(window.location.hash.slice(1));
+      if (target) {
+        requestAnimationFrame(() => target.scrollIntoView({ block: "start" }));
+      }
+    };
+
+    document.addEventListener("click", onClick, true);
+    window.addEventListener("hashchange", onHashChange);
+    if (window.location.hash) onHashChange();
+    return () => {
+      document.removeEventListener("click", onClick, true);
+      window.removeEventListener("hashchange", onHashChange);
     };
   }, []);
 
@@ -60,7 +120,7 @@ export default function Home() {
         <Menu />
       </Header>
       <ProgressIndicator />
-      <Cursor isDesktop={isDesktop} />
+      {isDesktop ? <Cursor /> : null}
       <main id="content" tabIndex={-1} className="flex flex-col outline-none">
         <div
           aria-hidden="true"

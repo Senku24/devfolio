@@ -1,79 +1,66 @@
 import { useEffect, useRef } from "react";
 import gsap from "gsap";
 
-const Cursor = ({ isDesktop }) => {
+const Cursor = () => {
   const cursor = useRef(null);
   const follower = useRef(null);
 
   useEffect(() => {
-    if (isDesktop && document.body.clientWidth > 767) {
-      follower.current.classList.remove("hidden");
-      cursor.current.classList.remove("hidden");
+    if (!window.matchMedia("(pointer: fine)").matches) return;
+    const cursorEl = cursor.current;
+    const followerEl = follower.current;
+    if (!cursorEl || !followerEl) return;
 
-      const moveCircle = (e) => {
-        gsap.to(cursor.current, {
-          x: e.clientX,
-          y: e.clientY,
-          duration: 0.1,
-          ease: "none",
-        });
-        gsap.to(follower.current, {
-          x: e.clientX,
-          y: e.clientY,
-          duration: 0.3,
-          ease: "none",
-        });
-      };
+    gsap.set([cursorEl, followerEl], { xPercent: -50, yPercent: -50 });
+    const cursorX = gsap.quickTo(cursorEl, "x", { duration: 0.1, ease: "none" });
+    const cursorY = gsap.quickTo(cursorEl, "y", { duration: 0.1, ease: "none" });
+    const followerX = gsap.quickTo(followerEl, "x", { duration: 0.3, ease: "none" });
+    const followerY = gsap.quickTo(followerEl, "y", { duration: 0.3, ease: "none" });
 
-      const hover = () => {
-        gsap.to(cursor.current, {
-          scale: 0.5,
-          duration: 0.3,
-        });
-        gsap.to(follower.current, {
-          scale: 3,
-          duration: 0.3,
-        });
-      };
+    const moveCircle = (event) => {
+      cursorX(event.clientX);
+      cursorY(event.clientY);
+      followerX(event.clientX);
+      followerY(event.clientY);
+    };
 
-      const unHover = () => {
-        gsap.to(cursor.current, {
-          scale: 1,
-          duration: 0.3,
-        });
-        gsap.to(follower.current, {
-          scale: 1,
-          duration: 0.3,
-        });
-      };
+    const hover = () => {
+      gsap.to(cursorEl, { scale: 0.5, duration: 0.3 });
+      gsap.to(followerEl, { scale: 3, duration: 0.3 });
+    };
 
-      document.addEventListener("mousemove", moveCircle);
+    const unHover = () => {
+      gsap.to(cursorEl, { scale: 1, duration: 0.3 });
+      gsap.to(followerEl, { scale: 1, duration: 0.3 });
+    };
 
-      document.querySelectorAll(".link").forEach((el) => {
-        el.addEventListener("mouseenter", hover);
-        el.addEventListener("mouseleave", unHover);
+    document.addEventListener("mousemove", moveCircle, { passive: true });
+    const links = document.querySelectorAll(".link");
+    links.forEach((el) => {
+      el.addEventListener("mouseenter", hover);
+      el.addEventListener("mouseleave", unHover);
+    });
+
+    return () => {
+      document.removeEventListener("mousemove", moveCircle);
+      links.forEach((el) => {
+        el.removeEventListener("mouseenter", hover);
+        el.removeEventListener("mouseleave", unHover);
       });
-
-      return () => {
-        document.removeEventListener("mousemove", moveCircle);
-
-        document.querySelectorAll(".link").forEach((el) => {
-          el.removeEventListener("mouseenter", hover);
-          el.removeEventListener("mouseleave", unHover);
-        });
-      };
-    }
-  }, [cursor, follower, isDesktop]);
+    };
+  }, []);
 
   return (
     <>
       <div
         ref={cursor}
-        className="bg-white rounded-full mix-blend-difference fixed w-4 h-4 select-none pointer-events-none z-50 hidden"
+        aria-hidden="true"
+        className="pointer-events-none fixed left-0 top-0 z-50 h-4 w-4 select-none rounded-full bg-accent"
       />
       <div
         ref={follower}
-        className="bg-white/[0.02] border border-white/[0.2] rounded-full fixed -top-3 -left-3 w-10 h-10 select-none pointer-events-none z-50 hidden"
+        aria-hidden="true"
+        className="pointer-events-none fixed left-0 top-0 z-50 h-10 w-10 select-none rounded-full border border-accent/40"
       />
     </>
   );
