@@ -14,7 +14,7 @@ Contact: nixonpaul.dev@gmail.com
 - Location: Gurugram, India
 - GitHub: https://github.com/Senku24
 - LinkedIn: https://www.linkedin.com/in/nixonpaul24/
-- Education: Master of Technology — Computer Science, Vellore Institute of Technology (Aug 2021 – Oct 2026)
+- Education: Master of Technology — Computer Science, Vellore Institute of Technology (2021 – 2026)
 - Certification: Microsoft Certified: Azure AI Fundamentals (AI-900), issued Aug 2024
 
 ## About
@@ -23,9 +23,9 @@ Nixon builds production software across the stack: interfaces, APIs, data and th
 
 ## Skills
 
-React, Next.js, TypeScript, JavaScript, Tailwind CSS, Node.js, Express, REST APIs, Java, PostgreSQL, MongoDB, Prisma, Python, spaCy, RAG, Claude Code, Cursor, WebSockets, WebRTC, Pub/Sub, Git, Docker, GitHub Actions, Vercel.
+React, Next.js, TypeScript, JavaScript, Tailwind CSS, Node.js, Express, REST APIs, Bun, PostgreSQL, MongoDB, Prisma, Redis, Python, spaCy, RAG, LLM APIs (Gemini, OpenRouter), Claude Code, Cursor, Git, Docker, GitHub Actions, Vercel.
 
-Currently exploring: RAG, AI Agents, Multimodal Agents, LLM Observability, Evaluations.
+Currently exploring: AI Agents, Multimodal Agents, LLM Observability, Evaluations.
 
 ## Experience
 

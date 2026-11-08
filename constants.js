@@ -83,7 +83,7 @@ export const FAQS = [
   {
     question: "What technologies does Nixon use?",
     answer:
-      "His toolkit includes React, Next.js, TypeScript, JavaScript, Node.js, Express, PostgreSQL, MongoDB, Prisma, Python, spaCy and RAG, alongside Git, Docker, GitHub Actions and Vercel.",
+      "His toolkit includes React, Next.js, TypeScript, JavaScript, Node.js, Express, Bun, PostgreSQL, MongoDB, Prisma, Redis, Python, spaCy, RAG and LLM APIs, alongside Git, Docker, GitHub Actions and Vercel.",
   },
   {
     question: "Is Nixon Paul available for roles or collaborations?",
@@ -108,7 +108,7 @@ export const EXPERIENCE = [
     location: "Remote",
     logo: "/images/company/virtusa.jpg",
     description:
-      "Built and supported features for enterprise web applications in a structured engineering environment. Worked across frontend and backend workflows, tightening implementation quality and delivery.",
+      "Built and supported features for enterprise web applications. Worked across frontend and backend workflows, with a focus on implementation quality and delivery.",
     skills: ["JavaScript", "Full-Stack Development"],
   },
   {
@@ -128,7 +128,7 @@ export const EDUCATION = {
   school: "Vellore Institute of Technology",
   short: "VIT",
   degree: "Master of Technology — Computer Science",
-  dates: "Aug 2021 – Oct 2026",
+  dates: "2021 – 2026",
   logo: "/images/company/vit.jpg",
   note: "Computer Science · full-stack systems, AI applications, product engineering",
 };
@@ -154,26 +154,23 @@ export const SKILLS = {
     { name: "Node.js", icon: "nodejs" },
     { name: "Express", icon: "express" },
     { name: "REST APIs", icon: "rest" },
-    { name: "Java", icon: "java" },
+    { name: "Bun", icon: "bun" },
   ],
   "Databases & Data": [
     { name: "PostgreSQL", icon: "postgresql" },
     { name: "MongoDB", icon: "mongodb" },
     { name: "Prisma", icon: "prisma" },
+    { name: "Redis" },
   ],
   "AI / ML": [
     { name: "Python", icon: "python" },
     { name: "spaCy", icon: "spacy" },
     { name: "RAG", icon: "rag" },
+    { name: "LLM APIs (Gemini, OpenRouter)" },
   ],
   "AI Tools": [
     { name: "Claude Code", icon: "claude" },
     { name: "Cursor", icon: "cursor" },
-  ],
-  "Real-time": [
-    { name: "WebSockets", icon: "websockets" },
-    { name: "WebRTC", icon: "webrtc" },
-    { name: "Pub/Sub", icon: "pubsub" },
   ],
   "DevOps / Infra": [
     { name: "Git", icon: "git" },
@@ -184,7 +181,6 @@ export const SKILLS = {
 };
 
 export const EXPLORING = [
-  "RAG",
   "AI Agents",
   "Multimodal Agents",
   "LLM Observability",
