@@ -1,7 +1,49 @@
-import useInView from "utils/use-in-view";
+import { useRef } from "react";
+import useIsomorphicLayoutEffect from "utils/use-isomorphic-layout-effect";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
 
 const About1 = ({ clientHeight }) => {
-  const [sectionRef, inView] = useInView({ threshold: 0.3 });
+  const sectionRef = useRef(null);
+  const quoteRef = useRef(null);
+
+  useIsomorphicLayoutEffect(() => {
+    const ctx = gsap.context(() => {
+      const tl = gsap
+        .timeline({
+          defaults: { ease: "none", duration: 0.1 },
+        })
+        .fromTo(
+          quoteRef.current.querySelector(".about-1"),
+          { opacity: 0.55 },
+          { opacity: 1 }
+        )
+        .to(quoteRef.current.querySelector(".about-1"), {
+          opacity: 0.55,
+          delay: 0.5,
+        })
+        .fromTo(
+          quoteRef.current.querySelector(".about-2"),
+          { opacity: 0.55 },
+          { opacity: 1 },
+          "<"
+        )
+        .to(quoteRef.current.querySelector(".about-2"), {
+          opacity: 0.85,
+          delay: 1,
+        });
+
+      ScrollTrigger.create({
+        trigger: sectionRef.current,
+        start: "center 80%",
+        end: "center top",
+        scrub: 0,
+        animation: tl,
+      });
+    });
+
+    return () => ctx.revert();
+  }, []);
 
   return (
     <section ref={sectionRef} aria-label="About" className="w-full relative select-none">
@@ -10,23 +52,17 @@ const About1 = ({ clientHeight }) => {
           clientHeight > 650 ? "pt-28 pb-16" : "pt-80 pb-72"
         } section-container`}
       >
-        <h2 className="font-medium text-[2.70rem] md:text-6xl lg:text-[4rem] text-center">
-          <span
-            className={`about-1 leading-tight reveal ${
-              inView ? "is-visible" : ""
-            }`}
-          >
+        <h2
+          ref={quoteRef}
+          className="font-medium text-[2.70rem] md:text-6xl lg:text-[4rem] text-center"
+        >
+          <span className="about-1 leading-tight">
             I build production software across the stack — interfaces, APIs,
             data, and the last mile of shipping.{" "}
           </span>
-          <span
-            className={`about-2 leading-tight reveal ${
-              inView ? "is-visible" : ""
-            }`}
-            style={{ transitionDelay: "120ms" }}
-          >
+          <span className="about-2 leading-tight">
             Lately that includes AI-powered tools, SaaS systems, and products
-            people actually use.
+            people actually use.{" "}
           </span>
         </h2>
       </div>

@@ -1,4 +1,5 @@
-import { useEffect, useRef } from "react";
+import { useRef } from "react";
+import useIsomorphicLayoutEffect from "utils/use-isomorphic-layout-effect";
 import { MENULINKS, PROJECTS } from "../../constants";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
@@ -56,7 +57,7 @@ const Projects = ({ isDesktop, clientHeight, prefersReducedMotion = false }) => 
     return [timeline, scrollTrigger];
   };
 
-  useEffect(() => {
+  useIsomorphicLayoutEffect(() => {
     const section = sectionRef.current;
     const projectWrapper = section.querySelector(".project-wrapper");
     const reduced = prefersReducedMotion;

@@ -37,6 +37,10 @@ export default function Home() {
     let lastWidth = window.innerWidth;
     let resizeTimer;
 
+    const refreshAll = () => {
+      ScrollTrigger.getAll().forEach((trigger) => trigger.refresh());
+    };
+
     const sync = () => {
       const nextDesktop = media.matches;
       const nextReduced = reducedMotion.matches;
@@ -54,7 +58,7 @@ export default function Home() {
 
       if (window.innerWidth !== lastWidth) {
         lastWidth = window.innerWidth;
-        ScrollTrigger.refresh();
+        refreshAll();
       }
     };
 
@@ -75,39 +79,16 @@ export default function Home() {
     };
   }, []);
 
-
-  // content-visibility keeps initial work down, but it also makes hash-link
-  // positions approximate. Render those sections before the browser scrolls.
+  // Fonts, images and the footer scene can settle after first paint. Refresh
+  // once more so every scroll-linked timeline uses the final layout.
   useEffect(() => {
-    const revealSections = () => {
-      document.querySelectorAll(".cv-auto").forEach((el) => {
-        el.style.contentVisibility = "visible";
-      });
-    };
-    const onClick = (event) => {
-      const link =
-        event.target instanceof Element
-          ? event.target.closest('a[href^="#"]')
-          : null;
-      if (!link) return;
-      const id = link.getAttribute("href").slice(1);
-      if (id && document.getElementById(id)) revealSections();
-    };
-    const onHashChange = () => {
-      if (!window.location.hash) return;
-      revealSections();
-      const target = document.getElementById(window.location.hash.slice(1));
-      if (target) {
-        requestAnimationFrame(() => target.scrollIntoView({ block: "start" }));
-      }
-    };
-
-    document.addEventListener("click", onClick, true);
-    window.addEventListener("hashchange", onHashChange);
-    if (window.location.hash) onHashChange();
+    const refresh = () =>
+      ScrollTrigger.getAll().forEach((trigger) => trigger.refresh());
+    const timer = setTimeout(refresh, 600);
+    window.addEventListener("load", refresh);
     return () => {
-      document.removeEventListener("click", onClick, true);
-      window.removeEventListener("hashchange", onHashChange);
+      clearTimeout(timer);
+      window.removeEventListener("load", refresh);
     };
   }, []);
 

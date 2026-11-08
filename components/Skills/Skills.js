@@ -1,15 +1,31 @@
 /* eslint-disable @next/next/no-img-element */
+import { useRef } from "react";
+import useIsomorphicLayoutEffect from "utils/use-isomorphic-layout-effect";
 import Image from "next/image";
-import useInView from "utils/use-in-view";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
 import { EXPLORING, MENULINKS, SKILLS } from "../../constants";
 
 const Skills = () => {
-  const [sectionRef, inView] = useInView({ threshold: 0.15 });
-  const [marqueeRef, marqueeInView] = useInView({
-    once: false,
-    threshold: 0,
-    rootMargin: "120px",
-  });
+  const sectionRef = useRef(null);
+
+  useIsomorphicLayoutEffect(() => {
+    const ctx = gsap.context(() => {
+      const tl = gsap.timeline({ defaults: { ease: "none" } }).from(
+        sectionRef.current.querySelectorAll(".staggered-reveal"),
+        { opacity: 0.4, duration: 0.4, stagger: 0.18, immediateRender: false },
+        "<"
+      );
+      ScrollTrigger.create({
+        trigger: sectionRef.current.querySelector(".skills-wrapper"),
+        start: "80px bottom",
+        end: "center center",
+        scrub: 0,
+        animation: tl,
+      });
+    });
+    return () => ctx.revert();
+  }, []);
 
   const loop = [...EXPLORING, ...EXPLORING];
 
@@ -36,35 +52,12 @@ const Skills = () => {
           width={320}
         />
         <div className="skills-wrapper flex flex-col">
-          <p
-            className={`uppercase tracking-widest text-gray-light-1 reveal ${
-              inView ? "is-visible" : ""
-            }`}
-          >
-            Skills
-          </p>
-          <h2
-            className={`mt-2 w-fit text-6xl font-medium text-gradient reveal ${
-              inView ? "is-visible" : ""
-            }`}
-            style={{ transitionDelay: "80ms" }}
-          >
-            My Skills
-          </h2>
-          <p
-            className={`mt-2 w-full text-[1.65rem] font-medium md:max-w-lg reveal ${
-              inView ? "is-visible" : ""
-            }`}
-            style={{ transitionDelay: "160ms" }}
-          >
+          <p className="staggered-reveal uppercase tracking-widest text-gray-light-1">Skills</p>
+          <h2 className="staggered-reveal mt-2 w-fit text-6xl font-medium text-gradient">My Skills</h2>
+          <p className="staggered-reveal mt-2 w-full text-[1.65rem] font-medium md:max-w-lg">
             Skills I use to build things.
           </p>
-          <div
-            className={`mt-12 grid grid-cols-2 gap-8 md:grid-cols-4 xl:grid-cols-8 reveal ${
-              inView ? "is-visible" : ""
-            }`}
-            style={{ transitionDelay: "220ms" }}
-          >
+          <div className="staggered-reveal mt-12 grid grid-cols-2 gap-8 md:grid-cols-4 xl:grid-cols-8">
             {Object.entries(SKILLS).map(([group, items]) => (
               <div key={group}>
                 <h3 className="mb-4 text-[11px] font-medium uppercase tracking-widest text-gray-light-2">
@@ -98,21 +91,12 @@ const Skills = () => {
               </div>
             ))}
           </div>
-          <div
-            className={`mt-16 overflow-hidden reveal ${
-              inView ? "is-visible" : ""
-            }`}
-            style={{ transitionDelay: "280ms" }}
-          >
+          <div className="staggered-reveal mt-16 overflow-hidden">
             <h3 className="mb-6 text-xs font-medium uppercase tracking-widest text-gray-light-2">
               Currently exploring
             </h3>
             <div className="explore-marquee group relative">
-              <ul
-                ref={marqueeRef}
-                className="explore-track flex w-max gap-3 py-1"
-                style={{ animationPlayState: marqueeInView ? "running" : "paused" }}
-              >
+              <ul className="explore-track flex w-max gap-3 py-1">
                 {loop.map((item, i) => (
                   <li key={`${item}-${i}`}>
                     <span className="inline-block border border-white/15 px-3 py-1.5 text-sm text-gray-light-3 transition hover:border-purple hover:text-white hover:shadow-[0_8px_24px_rgba(124,58,237,0.16)]">

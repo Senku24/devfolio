@@ -13,7 +13,7 @@ const ResumeIcon = () => (
 
 const Footer = () => (
   <footer
-    className="relative w-full select-none bg-gradient-to-r from-indigo-light to-indigo-dark cv-auto"
+    className="relative w-full select-none bg-gradient-to-r from-indigo-light to-indigo-dark"
   >
     <FooterBg />
     <div className="h-full w-full pt-32 text-black">

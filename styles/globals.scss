@@ -107,20 +107,6 @@ summary:focus-visible,
   color: #fff;
 }
 
-.reveal {
-  transform: translate3d(0, 12px, 0);
-  transition: transform 0.5s ease;
-}
-
-.reveal.is-visible {
-  transform: none;
-}
-
-.cv-auto {
-  content-visibility: auto;
-  contain-intrinsic-size: auto 900px;
-}
-
 .section-container {
   @apply 2xl:container xl:px-20 md:px-12 px-4 mx-auto;
 }
@@ -373,48 +359,6 @@ summary::-webkit-details-marker {
   background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-}
-
-.collab-track {
-  display: flex;
-  width: max-content;
-  white-space: nowrap;
-}
-
-.collab-track-left {
-  animation: collab-left 34s linear infinite;
-}
-
-.collab-track-right {
-  animation: collab-right 40s linear infinite;
-}
-
-@keyframes collab-left {
-  from {
-    transform: translateX(0);
-  }
-  to {
-    transform: translateX(-50%);
-  }
-}
-
-@keyframes collab-right {
-  from {
-    transform: translateX(-50%);
-  }
-  to {
-    transform: translateX(0);
-  }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .reveal {
-    transform: none;
-    transition: none;
-  }
-  .collab-track {
-    animation: none !important;
-  }
 }
 
 @keyframes sound-bars-animation {

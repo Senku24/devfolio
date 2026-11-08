@@ -1,15 +1,24 @@
+import { useRef } from "react";
 import useIsomorphicLayoutEffect from "utils/use-isomorphic-layout-effect";
-import useInView from "utils/use-in-view";
 import Image from "next/image";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
 import { CERTIFICATION, EDUCATION, EXPERIENCE, MENULINKS } from "../../constants";
 
 const Experience = () => {
-  const [sectionRef, inView] = useInView({ threshold: 0.1 });
+  const sectionRef = useRef(null);
 
   useIsomorphicLayoutEffect(() => {
     const ctx = gsap.context(() => {
+      gsap.from(".exp-item", {
+        opacity: 0.5,
+        x: -16,
+        stagger: 0.12,
+        duration: 0.5,
+        ease: "power2.out",
+        immediateRender: false,
+        scrollTrigger: { trigger: sectionRef.current, start: "top 80%" },
+      });
       gsap.fromTo(
         ".exp-line",
         { scaleY: 0 },
@@ -41,14 +50,8 @@ const Experience = () => {
       <div className="exp-list relative mt-14 border-l border-white/10">
         <span className="exp-line pointer-events-none absolute left-[-1px] top-0 h-full w-px origin-top bg-accent" />
         <ol>
-          {EXPERIENCE.map((job, index) => (
-          <li
-            key={job.company}
-            className={`exp-item relative pb-12 pl-10 last:pb-0 reveal ${
-              inView ? "is-visible" : ""
-            }`}
-            style={{ transitionDelay: `${index * 90}ms` }}
-          >
+          {EXPERIENCE.map((job) => (
+          <li key={job.company} className="exp-item relative pb-12 pl-10 last:pb-0">
             <span className="absolute -left-[7px] top-3 h-3 w-3 bg-accent" />
             <div className="flex flex-wrap items-center gap-4">
               <span className="flex h-12 w-12 shrink-0 items-center justify-center overflow-hidden rounded-md bg-white">
