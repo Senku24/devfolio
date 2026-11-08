@@ -1,5 +1,32 @@
+# Search engines and AI answer engines are welcome to crawl this portfolio.
 User-agent: *
 Allow: /
 
-# TODO(owner): replace the host below with the primary domain once METADATA.siteUrl is set
-Sitemap: https://example.com/sitemap.xml
+User-agent: GPTBot
+Allow: /
+
+User-agent: OAI-SearchBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: anthropic-ai
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: Applebot-Extended
+Allow: /
+
+User-agent: CCBot
+Allow: /
+
+Sitemap: https://nixonpaul.dev/sitemap.xml

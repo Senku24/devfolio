@@ -3,9 +3,9 @@ export const METADATA = {
   title: "Nixon Paul — Software Engineer",
   description:
     "Nixon Paul is a Software Engineer and Full-Stack Developer in Gurugram, building SaaS products, modern web systems, and practical AI tools.",
-  // TODO(owner): absolute primary origin, including https and apex or www.
-  // Can also be supplied at build time via NEXT_PUBLIC_SITE_URL.
-  siteUrl: process.env.NEXT_PUBLIC_SITE_URL || "",
+  // Absolute primary origin used for canonical, Open Graph, sitemap and AEO.
+  // Override at build time with NEXT_PUBLIC_SITE_URL if the final domain differs.
+  siteUrl: process.env.NEXT_PUBLIC_SITE_URL || "https://nixonpaul.dev",
   // TODO(owner): X/Twitter handle, without @, or leave empty
   twitterHandle: "",
   keywords: [
@@ -34,10 +34,9 @@ export const PROFILE = {
     "Building full-stack products, AI-powered tools, and SaaS systems that people actually use.",
   github: "https://github.com/Senku24",
   linkedin: "https://www.linkedin.com/in/nixonpaul24/",
-  // TODO(owner): drop the final PDF at public/resume.pdf, then set this back
-  // to "/resume.pdf". Links stay hidden while this is empty.
-  resume: "",
-  email: "nixonpaule24@gmail.com",
+  // Replace public/resume.pdf with the final PDF when it is ready.
+  resume: "/resume.pdf",
+  email: "nixonpaul.dev@gmail.com",
 };
 
 // Keep this order in sync with the scroll order of sections in pages/index.js
@@ -69,6 +68,34 @@ export const ABOUT = {
     "Lately I’m exploring AI-powered applications, agentic workflows, and how AR/VR changes interaction. I’m not collecting buzzwords — I’m testing what actually holds up when you ship it.",
   work: "I prefer owning the path from architecture to implementation to the next iteration. Curiosity is the habit. Shipping is the proof.",
 };
+
+export const FAQS = [
+  {
+    question: "Who is Nixon Paul?",
+    answer:
+      "Nixon Paul is a Software Engineer and Full-Stack Developer based in Gurugram, India. He builds SaaS products, modern web systems and practical AI tools.",
+  },
+  {
+    question: "What kind of work does Nixon do?",
+    answer:
+      "He works across the stack — interfaces, APIs, data and deployment — with a focus on full-stack products, AI-powered tools and real-time systems.",
+  },
+  {
+    question: "What technologies does Nixon use?",
+    answer:
+      "His toolkit includes React, Next.js, TypeScript, JavaScript, Node.js, Express, PostgreSQL, MongoDB, Prisma, Python, spaCy and RAG, alongside Git, Docker, GitHub Actions and Vercel.",
+  },
+  {
+    question: "Is Nixon Paul available for roles or collaborations?",
+    answer:
+      "Yes. He is open to engineering roles and collaborations. The fastest way to reach him is nixonpaul.dev@gmail.com, or connect with him on LinkedIn.",
+  },
+  {
+    question: "Where can I see Nixon's projects?",
+    answer:
+      "The Projects section covers CodexIQ, GreenWallet AI, ShelfLife, Resume Analyzer and CEX API, with source links for each project on GitHub.",
+  },
+];
 
 // TODO(owner): replace the descriptions below with 2–3 outcome bullets that
 // include numbers, and confirm the dates/education/certification details.
