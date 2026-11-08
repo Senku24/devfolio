@@ -119,7 +119,7 @@ const Meta = () => {
           item: {
             "@type": "SoftwareSourceCode",
             name: project.name,
-            description: project.outcome,
+            description: project.description,
             codeRepository: project.repo || undefined,
             url: project.live || undefined,
             programmingLanguage: project.tech

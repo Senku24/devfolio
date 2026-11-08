@@ -191,57 +191,83 @@ export const EXPLORING = [
   "Evaluations",
 ];
 
-// outcome/role are shown on the card when present; `live` renders a Live link
-// only when a deployment exists. TODO(owner): add outcome, role and live URLs.
+// Pinned GitHub repositories, in the order shown on github.com/Senku24.
+// live URLs are added only when the owner supplies one.
 export const PROJECTS = [
   {
     name: "CodexIQ",
-    imageKey: "codexiq",
-    outcome: "Understand any codebase in minutes, not weeks.",
-    role: "",
-    gradient: ["#0F172A", "#1E293B"],
+    description:
+      "Ask questions about any GitHub repo; get answers with cited code and API maps.",
     repo: "https://github.com/Senku24/codexIQ",
     live: "",
-    tech: ["typescript", "react", "nextjs", "postgresql", "prisma"],
+    tech: ["TypeScript", "React", "Next.js", "PostgreSQL", "Prisma"],
+    icon: "code",
+    tone: "violet",
   },
   {
     name: "GreenWallet AI",
-    imageKey: "greenwallet",
-    outcome: "AI-powered finance that actually changes habits.",
-    role: "",
-    gradient: ["#14532D", "#166534"],
+    description:
+      "AI finance app for Gen-Z: spending analysis, savings forecasts, ethical investing.",
     repo: "https://github.com/Senku24/greenWallet",
     live: "",
-    tech: ["python", "react", "typescript", "tailwindcss"],
+    tech: ["Python", "React", "TypeScript", "Tailwind CSS"],
+    icon: "leaf",
+    tone: "green",
   },
   {
-    name: "ShelfLife",
-    imageKey: "shelflife",
-    outcome: "Household inventory that stops food from going to waste.",
-    role: "",
-    gradient: ["#1E3A5F", "#0F172A"],
-    repo: "https://github.com/Senku24/shelf-life-inventory-tracker",
+    name: "Higgsfield AI",
+    description:
+      "Inspired by Higgsfield: create custom AI avatars and turn text prompts into videos.",
+    repo: "https://github.com/Senku24/Higgsfield_AI",
     live: "",
-    tech: ["javascript", "react", "nodejs", "mongodb"],
+    tech: [
+      "React",
+      "Bun",
+      "Express",
+      "Prisma",
+      "PostgreSQL",
+      "Gemini API",
+      "OpenRouter",
+    ],
+    icon: "sparkles",
+    tone: "magenta",
   },
   {
-    name: "Resume Analyzer",
-    imageKey: "resume-analyzer",
-    outcome: "NLP scoring for resume–job fit without a black box.",
-    role: "",
-    gradient: ["#3F1D2E", "#1F2937"],
-    repo: "https://github.com/Senku24/NLP-based-Resume-Analyzer",
+    name: "Mist",
+    description:
+      "Online compiler: run multi-language code in the browser via a Redis worker queue.",
+    repo: "https://github.com/Senku24/Mist--Online-compiler",
     live: "",
-    tech: ["python"],
+    tech: [
+      "React",
+      "Bun",
+      "Express",
+      "TypeScript",
+      "PostgreSQL",
+      "Prisma",
+      "Redis",
+    ],
+    icon: "terminal",
+    tone: "cyan",
   },
   {
-    name: "CEX API",
-    imageKey: "cex",
-    outcome: "Typed auth and persistence for trading-account workflows.",
-    role: "",
-    gradient: ["#111827", "#1F2937"],
-    repo: "https://github.com/Senku24/cex",
+    name: "Kalshi",
+    description:
+      "Prediction-market app: trade YES/NO opinions with virtual credits.",
+    repo: "https://github.com/Senku24/kalshi",
     live: "",
-    tech: ["nodejs", "express", "prisma", "postgresql"],
+    tech: ["Next.js", "React", "TypeScript", "Express", "MongoDB", "Bun", "Turborepo"],
+    icon: "chart",
+    tone: "blue",
+  },
+  {
+    name: "Devfolio",
+    description: "The source of this portfolio: Next.js, GSAP and Tailwind.",
+    repo: "https://github.com/Senku24/devfolio",
+    live: "",
+    tech: ["Next.js", "GSAP", "Tailwind CSS"],
+    icon: "layers",
+    tone: "lime",
   },
 ];
+

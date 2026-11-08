@@ -107,9 +107,17 @@ const Projects = ({ isDesktop, clientHeight, prefersReducedMotion = false }) => 
             My Projects
           </h2>
           <p className="text-[1.65rem] font-medium md:max-w-lg max-w-sm mt-2 staggered-reveal">
-            Some things I&apos;ve built with love, expertise and a pinch of
-            magical ingredients.{" "}
+            Six builds from my GitHub — full-stack apps, AI tools and developer
+            tooling.
           </p>
+          <a
+            href="https://github.com/Senku24?tab=repositories"
+            target="_blank"
+            rel="noreferrer"
+            className="link mt-5 inline-flex w-fit items-center gap-1.5 font-mono text-xs uppercase tracking-wider text-accent hover:underline"
+          >
+            See all repositories on GitHub <span aria-hidden="true">↗</span>
+          </a>
         </div>
         <div
           className={`${
